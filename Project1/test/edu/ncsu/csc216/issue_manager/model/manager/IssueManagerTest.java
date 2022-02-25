@@ -18,4 +18,76 @@ public class IssueManagerTest {
 	public void testManager() {
 		
 	}
+	
+	/**
+	 * Tests IssueManager.addIssueToList()
+	 */
+	@Test
+	public void testAddIssueToList() {
+		
+	}
+	
+	/**
+	 * Tests IssueManager.createNewIssuesList()
+	 */
+	@Test
+	public void testCreateNewIssuesList() {
+		
+	}
+	
+	/**
+	 * Tests IssueManager.deleteIssuebyId()
+	 */
+	@Test
+	public void testDeleteIssueById() {
+		
+	}
+	
+	/**
+	 * Tests IssueManager.executeCommand()
+	 */
+	@Test
+	public void testExecuteCommand() {
+		
+	}
+	
+	/**
+	 * Tests IssueManager.getIssueById
+	 */
+	@Test
+	public void testGetIssueById() {
+		
+	}
+	
+	/**
+	 * Tests IssueManager.getIssueListAsArray()
+	 */
+	@Test
+	public void testGetIssueListAsArray() {
+		
+	}
+	
+	/**
+	 * Tests IssueManager.getIssueListAsArrayByIssueType()
+	 */
+	@Test
+	public void testGetIssueListAsArrayByIssueType() {
+		
+	}
+	
+	/**
+	 * Tests IssueManager.loadIssuesFromFile()
+	 */
+	@Test
+	public void testLoadIssuesFromFile() {
+		
+	}
+	
+	/**
+	 * Tests IssueManager.saveIssuesToFile()
+	 */
+	@Test
+	public void testSaveIssuesToFile() {
+		
+	}
 }

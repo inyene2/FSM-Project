@@ -4,6 +4,7 @@
 package edu.ncsu.csc216.issue_manager.model.command;
 
 /**
+ * Command class constructs and handles Command objects
  * @author inyene2
  *
  */
@@ -71,7 +72,16 @@ public class Command {
 	 *
 	 */
 	public enum CommandValue {
-		ASSIGN, CONFIRM, RESOLVE, VERIFY, REOPEN;
+		/** Assign CommandValue */
+		ASSIGN, 
+		/** Confirm CommandValue */
+		CONFIRM, 
+		/** Resolve CommandValue */
+		RESOLVE, 
+		/** Verify CommandValue */
+		VERIFY, 
+		/** Reopen CommandValue */
+		REOPEN;
 			
 		}
 	/**
@@ -80,6 +90,13 @@ public class Command {
 	 *
 	 */
 	public enum Resolution {
-		FIXED, DUPLICATE, WONTFIX, WORKSFORME;
+		/** Fixed Resolution*/
+		FIXED,
+		/** Duplicate Resolution */
+		DUPLICATE,
+		/** WontFix Resolution */
+		WONTFIX, 
+		/** WorksForMe Resolution */
+		WORKSFORME;
 	}
 }

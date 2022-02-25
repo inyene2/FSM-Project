@@ -18,4 +18,54 @@ public class IssueListTest {
 	public void testIssueList() {
 		
 	}
+	
+	/**
+	 * Tests IssueList.addIssue()
+	 */
+	@Test
+	public void testAddIssue() {
+		
+	}
+	
+	/**
+	 * Tests IssueList.deleteIssueById()
+	 */
+	@Test
+	public void testDeleteIssueById() {
+		
+	}
+	
+	/**
+	 * Tests IssueList.executeCommand()
+	 */
+	@Test
+	public void testExecuteCommand() {
+		
+	}
+	
+	/**
+	 * Tests IssueList.getIssueById
+	 */
+	@Test
+	public void testGetIssueById() {
+		
+	}
+	
+	/**
+	 * Tests IssueList.getIssues
+	 */
+	@Test
+	public void testGetIssues() {
+		
+	}
+	
+	/**
+	 * Tests IssueList.getIssuesByType
+	 */
+	@Test
+	public void testGetIssuesByType() {
+		
+	}
+	
+	
 }
