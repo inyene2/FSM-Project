@@ -42,7 +42,7 @@ public class IssueList {
 		return null;
 	}
 	
-	public Issue getIssuesById(int x) {
+	public Issue getIssueById(int x) {
 		return null;
 	}
 	
