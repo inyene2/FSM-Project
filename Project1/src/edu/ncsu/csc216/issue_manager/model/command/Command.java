@@ -11,9 +11,12 @@ public class Command {
 	
 	/** Fixed String */
 	public static final String R_FIXED =  "Fixed";
-	public static final String R_DUPLICATE =  "Fixed";
-	public static final String R_WONTFIX =  "Fixed";
-	public static final String R_WORKSFORME =  "Fixed";
+	/** Duplicate String */
+	public static final String R_DUPLICATE =  "Duplicate";
+	/** Wont fix String */
+	public static final String R_WONTFIX =  "WontFix";
+	/** Works for me String */
+	public static final String R_WORKSFORME =  "WorksForMe";
 	
 	/** Command owner id */
 	private String ownerId;
