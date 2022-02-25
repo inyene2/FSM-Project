@@ -13,6 +13,21 @@ import edu.ncsu.csc216.issue_manager.model.command.Command.Resolution;
  *
  */
 public class Issue {
+	
+	private static final String I_ENHANCEMENT = "Enhancement";
+	
+	private static final String I_BUG = "Bug";
+	
+	private static final String NEW_NAME = "New";
+	
+	private static final String WORKING_NAME = "Working";
+	
+	private static final String CONFIRMED_NAME = "Confirmed";
+	
+	private static final String VERIFYING_NAME = "Verifying";
+	
+	private static final String CLOSED_NAME = "Closed";
+	
 	private int issueId;
 	
 	private String summary;

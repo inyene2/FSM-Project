@@ -8,8 +8,13 @@ package edu.ncsu.csc216.issue_manager.model.command;
  *
  */
 public class Command {
+	
 	/** Fixed String */
 	public static final String R_FIXED =  "Fixed";
+	public static final String R_DUPLICATE =  "Fixed";
+	public static final String R_WONTFIX =  "Fixed";
+	public static final String R_WORKSFORME =  "Fixed";
+	
 	/** Command owner id */
 	private String ownerId;
 	/** Command note */
