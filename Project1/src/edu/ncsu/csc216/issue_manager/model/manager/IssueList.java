@@ -4,6 +4,7 @@
 package edu.ncsu.csc216.issue_manager.model.manager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.ncsu.csc216.issue_manager.model.command.Command;
 import edu.ncsu.csc216.issue_manager.model.issue.Issue;
@@ -26,7 +27,7 @@ public class IssueList {
 		return 0;
 	}
 	
-	public void addIssues(ArrayList<Issue> issues) {
+	public void addIssues(List<Issue> issues) {
 		
 	}
 	
@@ -44,6 +45,10 @@ public class IssueList {
 	
 	public Issue getIssueById(int x) {
 		return null;
+	}
+	
+	public void deleteIssueById(int x) {
+		
 	}
 	
 	public void executeCommand(int x, Command c) {
