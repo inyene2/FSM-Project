@@ -24,7 +24,8 @@ public class IssueList {
 	 * Constructs IssueList objects
 	 */
 	public IssueList() {
-		
+		counter = 1;
+		issues = new ArrayList<Issue>();
 	}
 	/**
 	 * Adds Issue to list
@@ -34,14 +35,20 @@ public class IssueList {
 	 * @return Issue id
 	 */
 	public int addIssue(IssueType type, String x, String y) {
-		return 0;
+		Issue i = new Issue(counter, type, x, y);
+		issues.add(i);
+		counter++;
+		return counter;
 	}
 	
 	/**
 	 * Adds issues to list
-	 * @param issues list of Issues to add
+	 * @param issues1 list of Issues to add
 	 */
-	public void addIssues(List<Issue> issues) {
+	public void addIssues(List<Issue> issues1) {
+		for (int i = 0; i < issues1.size(); i++) {
+			addIssue(issues1.get(i));
+		}
 		
 	}
 	/**
