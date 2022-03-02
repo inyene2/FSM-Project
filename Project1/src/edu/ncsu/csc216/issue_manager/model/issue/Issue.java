@@ -6,6 +6,7 @@ package edu.ncsu.csc216.issue_manager.model.issue;
 import java.util.ArrayList;
 
 import edu.ncsu.csc216.issue_manager.model.command.Command;
+import edu.ncsu.csc216.issue_manager.model.command.Command.CommandValue;
 import edu.ncsu.csc216.issue_manager.model.command.Command.Resolution;
 
 /**
@@ -43,180 +44,247 @@ public class Issue {
 	/** Issue resolution */
 	private Resolution resolution;
 	/** Issue NewState */
-	private IssueState newState;
+	private final IssueState newState = new NewState();
 	/** Issue ConfirmedState */
-	private IssueState confirmedState;
+	private final IssueState confirmedState = new ConfirmedState();
 	/** Issue ClosedState */
-	private IssueState closedState;
+	private final IssueState closedState = new ClosedState();
 	/** Issue current state */
 	private IssueState state;
 	/** Issue VerifyingState */
-	private IssueState verifyingState;
+	private final IssueState verifyingState = new VerifyingState();
 	/** Issue WorkingState */
-	private IssueState workingState;
+	private final IssueState workingState = new WorkingState();
 	
 	/**
 	 * Issue constructor
-	 * @param i id
-	 * @param issue type
-	 * @param x owner
-	 * @param y note
+	 * @param id Issue id
+	 * @param type Issue type
+	 * @param sum Issue summary
+	 * @param note Issue notes
 	 */
-	public Issue (int i, IssueType issue, String x, String y) {
-		
+	public Issue (int id, IssueType type, String sum, String note) {
+		if (type == null || sum == null || sum.length() == 0 || note == null || note.length() == 0 || id < 1) {
+			throw new IllegalArgumentException("Issue cannot be created.");
+		}
+		else {
+			issueId = id;
+			summary = sum;
+			owner = "";
+			confirmed = false;
+			issueType = type;
+			resolution = null;
+			state = null;
+			
+			notes = new ArrayList<String>();
+			notes.add(note);
+		}
 	}
 	/**
 	 * Issue constructor with parameters for all fields
-	 * @param a id
-	 * @param b name
-	 * @param c title
-	 * @param d section
-	 * @param e command
-	 * @param f confirmed status
-	 * @param g owner
-	 * @param h notes
+	 * @param id Issue id
+	 * @param state Issue state
+	 * @param type Issue type
+	 * @param sum Issue summary
+	 * @param owner1 Issue owner
+	 * @param confirmed1 Issue confirmed status
+	 * @param resolution1 Issue resolution
+	 * @param notes1 Issue notes
 	 */
-	public Issue (int a, String b, String c, String d, String e, boolean f, String g, ArrayList<String> h) {
-		
+	public Issue (int id, String state, String type, String sum, String owner1, boolean confirmed1, String resolution1, ArrayList<String> notes1) {
+		if (type == null || sum == null || sum.length() == 0 || notes == null || notes.size() == 0 || id < 1 || owner1 == null || owner1.length() == 0 || resolution1 == null || resolution1.length() == 0) {
+			throw new IllegalArgumentException("Issue cannot be created.");
+		}
+		else {
+			setIssueId(id);
+			setSummary(sum);
+			setOwner(owner1);
+			setConfirmed(confirmed1);
+			setIssueType(type);
+			setResolution(resolution1);
+			setState(state);
+			setNotes(notes1);
+		}
 	}
 	/**
 	 * Sets Issue id
 	 * @param i id
 	 */
 	private void setIssueId(int i) {
-		
+		issueId = i;
 	}
 	/**
 	 * Sets Issue state
 	 * @param x state
 	 */
 	private void setState(String x) {
-		
+		if (x.charAt(1) == 'l' || x.charAt(0) == 'L') {
+			state = closedState;
+		}
+		else if (x.charAt(0) == 'w' || x.charAt(0) == 'W') {
+			state = workingState;
+		}
+		else if (x.charAt(0) == 'n' || x.charAt(0) == 'N') {
+			state = newState;
+		}
+		else if (x.charAt(0) == 'c' || x.charAt(0) == 'C') {
+			state = confirmedState;
+		}
+		else if (x.charAt(0) == 'v' || x.charAt(0) == 'V') {
+			state = verifyingState;
+		}
+		else {
+			state = null;
+		}
 	}
 	/**
 	 * Sets Issue type
 	 * @param x type
 	 */
 	private void setIssueType(String x) {
-		
+		if (x.charAt(0) == 'b' || x.charAt(0) == 'B') {
+			issueType = IssueType.BUG;
+		}
+		else if (x.charAt(0) == 'e' || x.charAt(0) == 'E') {
+			issueType = IssueType.ENHANCEMENT;
+		}
+		//else
 	}
 	/**
 	 * Sets Issue summary
 	 * @param x summary
 	 */
 	private void setSummary(String x) {
-		
+		summary = x;
 	}
 	/**
 	 * Sets Issue owner
 	 * @param x owner
 	 */
 	private void setOwner(String x) {
-		
+		owner = x;
 	}
 	/**
 	 * Sets Issue confirmed status
 	 * @param x confirmed boolean
 	 */
 	private void setConfirmed(boolean x) {
-		
+		confirmed = x;
 	}
 	/**
 	 * Sets Issue Resolution
 	 * @param x resolution
 	 */
 	private void setResolution(String x) {
-		
+		if (x.charAt(0) == 'f' || x.charAt(0) == 'F') {
+			resolution = Resolution.FIXED;
+		}
+		else if (x.charAt(0) == 'd' || x.charAt(0) == 'D') {
+			resolution = Resolution.DUPLICATE;
+		} 
+		else if (x.charAt(2) == 'n' || x.charAt(0) == 'N') {
+			resolution = Resolution.WONTFIX;
+		} 
+		else if (x.charAt(2) == 'r' || x.charAt(0) == 'R') {
+			resolution = Resolution.WORKSFORME;
+		} 
 	}
 	/**
 	 * Sets Issue notes
 	 * @param x notes
 	 */
 	private void setNotes(ArrayList<String> x) {
-		
+		notes = x;
 	}
 	/**
 	 * Gets Issue id
 	 * @return id
 	 */
 	public int getIssueId() {
-		return 0;
+		return issueId;
 	}
 	/**
 	 * Gets Issue state name
 	 * @return state name
 	 */
 	public String getStateName() {
-		return null;
+		return state.getStateName();
 	}
 	/**
 	 * Gets Issue type
 	 * @return type
 	 */
 	public String getIssueType() {
-		return null;
+		return issueType + "";
 	}
 	/**
 	 * Gets Issue resolution
 	 * @return resolution
 	 */
 	public String getResolution() {
-		return null;
+		return resolution + "";
 	}
 	/**
 	 * Returns Issue owner
 	 * @return owner
 	 */
 	public String getOwner() {
-		return null;
+		return owner;
 	}
 	/**
 	 * Gets Issue summary
 	 * @return summary
 	 */
 	public String getSummary() {
-		return null;
+		return summary;
 	}
 	/**
 	 * Gets Issue notes
 	 * @return notes
 	 */
 	public ArrayList<String> getNotes() {
-		return null;
+		return notes;
 	}
 	/**
 	 * Gets Issue notes as string
 	 * @return notes
 	 */
 	public String getNotesString() {
-		return null;
+		String listOfNotes = "";
+		for (int i = 0; i < notes.size(); i++) {
+			listOfNotes = "-" + notes.get(i) + "\n";
+		}
+		return listOfNotes;
 	}
 	/**
 	 * Returns Issue confirmed status
 	 * @return confirmed status
 	 */
 	public boolean isConfirmed () {
-		return false;
+		return confirmed;
 	}
 	/**
 	 * Returns Issue as string
 	 * @return Issue as string
 	 */
 	public String toString() {
-		return null;
+		return "*" + getIssueId() + "," + getStateName() + "," + getIssueType() + "," + getSummary() + "," + getOwner() + "," + isConfirmed() + "," + getResolution() + "\n" + getNotesString();
 	}
 	/**
 	 * Adds note to Issue
 	 * @param x note
 	 */
 	private void addNote(String x) {
-		
+		if (x == null || x.length() == 0) {
+			throw new IllegalArgumentException();
+		}
+		notes.add("[ " + getStateName() + "]" + x);
 	}
 	/**
 	 * Updates Issue with Command
 	 * @param x command
 	 */
-	public void update(Command x) {
+	public void update(Command x) throws UnsupportedOperationException{
 		
 	}
 	/**
@@ -230,6 +298,36 @@ public class Issue {
 		/** Bug IssueType */
 		BUG;
 	}
+	
+	/**
+	 * Interface for states in the Issue State Pattern.  All 
+	 * concrete issue states must implement the IssueState interface.
+	 * The IssueState interface should be a private interface of the 
+	 * Issue class.
+	 * 
+	 * @author Dr. Sarah Heckman (sarah_heckman@ncsu.edu) 
+	 */
+	private interface IssueState {
+		
+		/**
+		 * Update the Issue based on the given Command.
+		 * An UnsupportedOperationException is throw if the Command
+		 * is not a valid action for the given state.  
+		 * @param command Command describing the action that will update the Issue's
+		 * state.
+		 * @throws UnsupportedOperationException if the Command is not a valid action
+		 * for the given state.
+		 */
+		void updateState(Command command);
+		
+		/**
+		 * Returns the name of the current state as a String.
+		 * @return the name of the current state as a String.
+		 */
+		String getStateName();
+
+	}
+	
 	/**
 	 * ClosedState implementation of IssueState
 	 * @author inyene2
@@ -239,14 +337,32 @@ public class Issue {
 
 		@Override
 		public void updateState(Command x) {
-			// TODO Auto-generated method stub
-			
+			if (x.getCommand() == CommandValue.REOPEN) {
+				if (getIssueType() == I_ENHANCEMENT && (owner != null || owner.length() != 0)) {
+					state = workingState;
+					addNote(x.getNote());
+				}
+				else if (getIssueType() == I_BUG && (owner != null || owner.length() != 0)) {
+					state = workingState;
+					addNote(x.getNote());
+				}
+				else if (getIssueType() == I_BUG && (owner == null || owner.length() == 0)) {
+					state = confirmedState;
+					addNote(x.getNote());
+				}
+				else if (getIssueType() == I_BUG || getIssueType() == I_BUG && (owner == null || owner.length() == 0)){
+					state = newState;
+					addNote(x.getNote());
+				}
+			}
+			else {
+				throw new UnsupportedOperationException("Invalid information.");
+			}
 		}
 
 		@Override
 		public String getStateName() {
-			// TODO Auto-generated method stub
-			return null;
+			return state.getStateName();
 		}
 		
 		
@@ -257,17 +373,28 @@ public class Issue {
 	 *
 	 */
 	public class WorkingState implements IssueState {
-
+		
 		@Override
 		public void updateState(Command x) {
-			// TODO Auto-generated method stub
+			if (x.getCommand() == CommandValue.RESOLVE) {
+				if (x.getResolution() == Resolution.FIXED) {
+					state = verifyingState;
+					addNote(x.getNote());
+				}
+				else {
+					addNote(x.getNote());
+					state = closedState;
+				}
+			}
+			else {
+				throw new UnsupportedOperationException("Invalid information.");
+			}
 			
 		}
 
 		@Override
 		public String getStateName() {
-			// TODO Auto-generated method stub
-			return null;
+			return state.getStateName();
 		}
 		
 		
@@ -281,14 +408,29 @@ public class Issue {
 
 		@Override
 		public void updateState(Command x) {
-			// TODO Auto-generated method stub
+			if (getIssueType() == I_ENHANCEMENT && x.getCommand() == CommandValue.ASSIGN) {
+				state = workingState;
+				owner = x.getOwnerId();
+				addNote(x.getNote());
+			}
+			else if (getIssueType() == I_BUG && x.getCommand() == CommandValue.CONFIRM) {
+				state = confirmedState;
+				addNote(x.getNote());
+			}
+			else if (x.getCommand() == CommandValue.RESOLVE) {
+				resolution = x.getResolution();
+				state = closedState;
+				addNote(x.getNote());
+			}
+			else {
+				throw new UnsupportedOperationException("Invalid information.");
+			}
 			
 		}
 
 		@Override
 		public String getStateName() {
-			// TODO Auto-generated method stub
-			return null;
+			return state.getStateName();
 		}
 		
 		
@@ -302,14 +444,31 @@ public class Issue {
 
 		@Override
 		public void updateState(Command x) {
-			// TODO Auto-generated method stub
-			
+			if (getIssueType() == I_BUG) {
+				if (x.getCommand() == CommandValue.ASSIGN) {
+					state = workingState;
+					owner = x.getOwnerId();
+					addNote(x.getNote());
+				}
+				else if (x.getCommand() == CommandValue.RESOLVE) {
+					if (x.getResolution() == Resolution.WONTFIX) {
+						state = closedState;
+						addNote(x.getNote());
+					}
+					else {
+						throw new UnsupportedOperationException("Invalid information.");
+					}
+				}
+				else {
+					throw new UnsupportedOperationException("Invalid information.");
+				}
+			}
+			throw new UnsupportedOperationException("Invalid information.");
 		}
 
 		@Override
 		public String getStateName() {
-			// TODO Auto-generated method stub
-			return null;
+			return state.getStateName();
 		}
 		
 		
@@ -323,14 +482,22 @@ public class Issue {
 
 		@Override
 		public void updateState(Command x) {
-			// TODO Auto-generated method stub
-			
+			if (x.getCommand() == CommandValue.VERIFY) {
+				state = closedState;
+				addNote(x.getNote());
+			}
+			else if (x.getCommand() == CommandValue.REOPEN) {
+				state = workingState;
+				addNote(x.getNote());
+			}
+			else {
+				throw new UnsupportedOperationException("Invalid information.");
+			}
 		}
 
 		@Override
 		public String getStateName() {
-			// TODO Auto-generated method stub
-			return null;
+			return state.getStateName();
 		}
 		
 		

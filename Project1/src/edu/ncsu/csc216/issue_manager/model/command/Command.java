@@ -24,47 +24,64 @@ public class Command {
 	/** Command note */
 	private String note;
 	/** Instructions of Command */
-	private Command c;
+	private CommandValue command;
 	/** Command resolution  */
 	private Resolution resolution;
 	
 	/**
 	 * Constructs Command objects with params for all fields
 	 * @param x CommandValue of Command
-	 * @param ownerId ownerId of Command
+	 * @param id ownerId of Command
 	 * @param z Resolution of Command
-	 * @param note Command note
+	 * @param n Command note
 	 */
-	public Command(CommandValue x, String ownerId, Resolution z, String note) {
-		
+	public Command(CommandValue x, String id, Resolution z, String n) {
+		if (x == null) {
+			throw new IllegalArgumentException("Invalid information.");
+		}
+		else if (x == CommandValue.ASSIGN && (id == null || id.length() == 0)) {
+			throw new IllegalArgumentException("Invalid information.");
+		}
+		else if (x == CommandValue.RESOLVE && (z == null)) {
+			throw new IllegalArgumentException("Invalid information.");
+		}
+		else if (note == null || note.length() == 0) {
+			throw new IllegalArgumentException("Invalid information.");
+		}
+		else {
+			command = x;
+			ownerId = id;
+			resolution = z;
+			note = n;
+		}
 	}
 	/**
 	 * Returns Command
 	 * @return command
 	 */
 	public CommandValue getCommand() {
-		return null;
+		return command;
 	}
 	/**
 	 * Returns Command Ownerid
 	 * @return Owner id
 	 */
 	public String getOwnerId() {
-		return null;
+		return ownerId;
 	}
 	/**
 	 * Return Command resolution
 	 * @return Commanf Resolution
 	 */
 	public Resolution getResolution() {
-		return null;
+		return resolution;
 	}
 	/**
 	 * Return Command note
 	 * @return Command note
 	 */
 	public String getNote() {
-		return null;
+		return note;
 	}
 	/**
 	 * Keeps static values for CommandValues
