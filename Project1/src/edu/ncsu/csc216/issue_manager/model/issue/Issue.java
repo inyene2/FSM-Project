@@ -74,10 +74,10 @@ public class Issue {
 			confirmed = false;
 			issueType = type;
 			resolution = null;
-			state = null;
+			state = newState;
 			
 			notes = new ArrayList<String>();
-			notes.add(note);
+			addNote(note);
 		}
 	}
 	/**
@@ -92,7 +92,7 @@ public class Issue {
 	 * @param notes1 Issue notes
 	 */
 	public Issue (int id, String state, String type, String sum, String owner1, boolean confirmed1, String resolution1, ArrayList<String> notes1) {
-		if (type == null || sum == null || sum.length() == 0 || notes == null || notes.size() == 0 || id < 1 || owner1 == null || owner1.length() == 0 || resolution1 == null || resolution1.length() == 0) {
+		if (type == null || sum == null || sum.length() == 0 || notes1 == null || notes1.size() == 0 || id < 1 || owner1 == null || owner1.length() == 0 || resolution1 == null || resolution1.length() == 0) {
 			throw new IllegalArgumentException("Issue cannot be created.");
 		}
 		else {
@@ -215,14 +215,27 @@ public class Issue {
 	 * @return type
 	 */
 	public String getIssueType() {
-		return issueType + "";
+		if (issueType == IssueType.BUG) {
+			return I_BUG;
+		}
+		else
+			return I_ENHANCEMENT;
 	}
 	/**
 	 * Gets Issue resolution
 	 * @return resolution
 	 */
 	public String getResolution() {
-		return resolution + "";
+		if (resolution == Resolution.DUPLICATE)
+			return "Duplicate";
+		else if (resolution == Resolution.FIXED)
+			return "Fixed";
+		else if (resolution == Resolution.WONTFIX)
+			return "Duplicate";
+		else if (resolution == Resolution.WORKSFORME)
+			return "WorksForMe";
+		else
+			return "";
 	}
 	/**
 	 * Returns Issue owner
@@ -252,7 +265,7 @@ public class Issue {
 	public String getNotesString() {
 		String listOfNotes = "";
 		for (int i = 0; i < notes.size(); i++) {
-			listOfNotes = "-" + notes.get(i) + "\n";
+			listOfNotes = listOfNotes + "-" + "[" + getIssueType() + "] " + notes.get(i) + "\n";
 		}
 		return listOfNotes;
 	}
@@ -278,7 +291,7 @@ public class Issue {
 		if (x == null || x.length() == 0) {
 			throw new IllegalArgumentException();
 		}
-		notes.add("[ " + getStateName() + "]" + x);
+		notes.add("[" + getStateName() + "] " + x);
 	}
 	/**
 	 * Updates Issue with Command
@@ -356,15 +369,19 @@ public class Issue {
 					state = workingState;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_BUG && (owner != null || owner.length() != 0)) {
+				else if (getIssueType() == I_ENHANCEMENT && (owner == null || owner.length() == 0)) {
+					state = newState;
+					addNote(x.getNote());
+				}
+				else if (getIssueType() == I_BUG && isConfirmed() && (owner != null || owner.length() != 0)) {
 					state = workingState;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_BUG && (owner == null || owner.length() == 0)) {
+				else if (getIssueType() == I_BUG && isConfirmed() && (owner == null || owner.length() == 0)) {
 					state = confirmedState;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_BUG || getIssueType() == I_BUG && (owner == null || owner.length() == 0)){
+				else if ((getIssueType() == I_BUG  && isConfirmed()) || getIssueType() == I_ENHANCEMENT && (owner == null || owner.length() == 0)){
 					state = newState;
 					addNote(x.getNote());
 				}
@@ -376,7 +393,7 @@ public class Issue {
 
 		@Override
 		public String getStateName() {
-			return state.getStateName();
+			return CLOSED_NAME;
 		}
 		
 		
@@ -408,7 +425,7 @@ public class Issue {
 
 		@Override
 		public String getStateName() {
-			return state.getStateName();
+			return WORKING_NAME;
 		}
 		
 		
@@ -444,7 +461,7 @@ public class Issue {
 
 		@Override
 		public String getStateName() {
-			return state.getStateName();
+			return NEW_NAME;
 		}
 		
 		
@@ -477,12 +494,13 @@ public class Issue {
 					throw new UnsupportedOperationException("Invalid information.");
 				}
 			}
-			throw new UnsupportedOperationException("Invalid information.");
+			else
+				throw new UnsupportedOperationException("Invalid information.");
 		}
 
 		@Override
 		public String getStateName() {
-			return state.getStateName();
+			return CONFIRMED_NAME;
 		}
 		
 		
@@ -511,7 +529,7 @@ public class Issue {
 
 		@Override
 		public String getStateName() {
-			return state.getStateName();
+			return VERIFYING_NAME;
 		}
 		
 		

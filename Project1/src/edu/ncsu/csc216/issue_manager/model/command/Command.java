@@ -45,7 +45,7 @@ public class Command {
 		else if (x == CommandValue.RESOLVE && (z == null)) {
 			throw new IllegalArgumentException("Invalid information.");
 		}
-		else if (note == null || note.length() == 0) {
+		else if (n == null || n.length() == 0) {
 			throw new IllegalArgumentException("Invalid information.");
 		}
 		else {
