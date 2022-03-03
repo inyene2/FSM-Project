@@ -285,7 +285,21 @@ public class Issue {
 	 * @param x command
 	 */
 	public void update(Command x) throws UnsupportedOperationException{
-		
+		if (state == newState) {
+			newState.updateState(x);
+		}
+		else if (state == confirmedState) {
+			confirmedState.updateState(x);
+		}
+		else if (state == closedState) {
+			closedState.updateState(x);
+		}
+		else if (state == verifyingState) {
+			verifyingState.updateState(x);
+		}
+		else if (state == workingState) {
+			workingState.updateState(x);
+		}
 	}
 	/**
 	 * Holds static Issue types

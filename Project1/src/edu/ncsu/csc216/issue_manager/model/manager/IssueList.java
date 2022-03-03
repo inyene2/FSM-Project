@@ -49,6 +49,7 @@ public class IssueList {
 		for (int i = 0; i < issues1.size(); i++) {
 			addIssue(issues1.get(i));
 		}
+		counter = issues.get(issues.size() - 1).getIssueId() + 1;
 		
 	}
 	/**
@@ -56,14 +57,19 @@ public class IssueList {
 	 * @param x Issue to add
 	 */
 	private void addIssue(Issue x) {
-		
+		for (int i = 0; i < issues.size(); i++) {
+			if (x.getIssueId() < issues.get(i).getIssueId()) {
+				issues.add(i, x);
+			}
+		}
+		counter = issues.get(issues.size() - 1).getIssueId() + 1;
 	}
 	/**
 	 * Returns list of Issues
 	 * @return list of Issues
 	 */
 	public ArrayList<Issue> getIssues() {
-		return null;
+		return issues;
 	}
 	/**
 	 * Returns Issue by type
@@ -71,7 +77,26 @@ public class IssueList {
 	 * @return Issue
 	 */
 	public ArrayList<Issue> getIssuesByType(String x) {
-		return null;
+		ArrayList<Issue> z = new ArrayList<Issue>();
+		if (x.charAt(0) == 'b' || x.charAt(0) == 'B') {
+			for (int i = 0; i < issues.size(); i++) {
+				if (issues.get(i).getIssueType().equals("Bug")) {
+					z.add(issues.get(i));
+				}
+			}
+			return z;
+		}
+		else if (x.charAt(0) == 'E' || x.charAt(0) == 'e') {
+			for (int i = 0; i < issues.size(); i++) {
+				if (issues.get(i).getIssueType().equals("Enhancement")) {
+					z.add(issues.get(i));
+				}
+			}
+			return z;
+		}
+		else 
+			return null;
+		
 	}
 	/**
 	 * Returns Issue by Id
@@ -79,6 +104,11 @@ public class IssueList {
 	 * @return Issue
 	 */
 	public Issue getIssueById(int x) {
+		for (int i = 0; i < issues.size(); i++) {
+			if (issues.get(i).getIssueId() == x) {
+				return issues.get(i);
+			}
+		}
 		return null;
 	}
 	/**
@@ -86,7 +116,11 @@ public class IssueList {
 	 * @param x Issue id
 	 */
 	public void deleteIssueById(int x) {
-		
+		for (int i = 0; i < issues.size(); i++) {
+			if (issues.get(i).getIssueId() == x) {
+				issues.remove(i);
+			}
+		}
 	}
 	/**
 	 * Executes Command c
@@ -94,6 +128,10 @@ public class IssueList {
 	 * @param c Command c
 	 */
 	public void executeCommand(int x, Command c) {
-		
+		for (int i = 0; i < issues.size(); i++) {
+			if (issues.get(i).getIssueId() == x) {
+				issues.get(i).update(c);
+			}
+		}
 	}
 }
