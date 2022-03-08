@@ -21,7 +21,7 @@ public class IssueReader {
 	 * Constructs IssueReader objects
 	 */
 	public IssueReader() {
-
+		// The explicit constructor is here, so that it is possible to provide Javadoc. 
 	}
 
 	/**
@@ -37,6 +37,9 @@ public class IssueReader {
 			Scanner fileReader = new Scanner(new FileInputStream(fileName)); // Create a file scanner to read the file
 			while (fileReader.hasNextLine()) { // While we have more lines in the file
 				x = x + fileReader.nextLine() + "\n";
+			}
+			if (x.length() == 0) {
+				throw new IllegalArgumentException();
 			}
 			fileReader.close();
 		} catch (Exception e) {
@@ -62,16 +65,26 @@ public class IssueReader {
 	 * @return Processed Issue
 	 */
 	private static Issue processIssue(String x) {
+		String resolution1;
 		Scanner scnr = new Scanner(x);
-		scnr.useDelimiter(",");
+		String fields = scnr.nextLine();
+		Scanner scnr1 = new Scanner(fields);
+		scnr1.useDelimiter(",");
+		
 
-		int ownerId = scnr.nextInt();
-		String state = scnr.next();
-		String type = scnr.next();
-		String summary = scnr.next();
-		String owner1 = scnr.next();
-		boolean confirmed1 = scnr.nextBoolean();
-		String resolution1 = scnr.next();
+		int ownerId = scnr1.nextInt();
+		String state = scnr1.next();
+		String type = scnr1.next();
+		String summary = scnr1.next();
+		String owner1 = scnr1.next();
+		boolean confirmed1 = scnr1.nextBoolean();
+		if (scnr1.hasNext()) {
+			resolution1 = scnr1.next();
+		}
+		else {
+			resolution1 = "";
+		}
+		scnr1.close();
 		ArrayList<String> notes1 = new ArrayList<String>();
 		
 		scnr.useDelimiter("\r?\n?[-]");

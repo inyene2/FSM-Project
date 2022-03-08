@@ -3,6 +3,8 @@
  */
 package edu.ncsu.csc216.issue_manager.model.manager;
 
+import static org.junit.Assert.fail;
+
 import org.junit.Test;
 
 /**
@@ -16,7 +18,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testManager() {
-		
+		fail();
 	}
 	
 	/**
@@ -24,7 +26,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testAddIssueToList() {
-		
+		fail();
 	}
 	
 	/**
@@ -32,7 +34,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testCreateNewIssuesList() {
-		
+		fail();
 	}
 	
 	/**
@@ -40,7 +42,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testDeleteIssueById() {
-		
+		fail();
 	}
 	
 	/**
@@ -48,7 +50,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testExecuteCommand() {
-		
+		fail();
 	}
 	
 	/**
@@ -56,7 +58,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testGetIssueById() {
-		
+		fail();
 	}
 	
 	/**
@@ -64,7 +66,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testGetIssueListAsArray() {
-		
+		fail();
 	}
 	
 	/**
@@ -72,7 +74,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testGetIssueListAsArrayByIssueType() {
-		
+		fail();
 	}
 	
 	/**
@@ -80,7 +82,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testLoadIssuesFromFile() {
-		
+		fail();
 	}
 	
 	/**
@@ -88,6 +90,6 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testSaveIssuesToFile() {
-		
+		fail();
 	}
 }

@@ -3,6 +3,8 @@
  */
 package edu.ncsu.csc216.issue_manager.view.ui;
 
+import static org.junit.Assert.fail;
+
 import org.junit.Test;
 
 /**
@@ -16,6 +18,6 @@ public class IssueManagerGUITest {
 	 */
 	@Test
 	public void testIssueManagerGUI() {
-		
+		fail();
 	}
 }

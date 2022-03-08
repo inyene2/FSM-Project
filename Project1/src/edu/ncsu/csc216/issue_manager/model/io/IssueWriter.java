@@ -20,7 +20,7 @@ public class IssueWriter {
 	 * Constructs IssueWriter objects
 	 */
 	public IssueWriter() {
-		
+		// The explicit constructor is here, so that it is possible to provide Javadoc. 
 	}
 	/**
 	 * Writes out list of Issues to file

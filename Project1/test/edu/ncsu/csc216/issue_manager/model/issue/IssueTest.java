@@ -5,6 +5,7 @@ package edu.ncsu.csc216.issue_manager.model.issue;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
@@ -69,14 +70,14 @@ public class IssueTest {
 	 */
 	@Test
 	public void testGetIssueType() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.getNotes()
 	 */
 	@Test
 	public void testGetNotes() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.getNotesString()
@@ -96,91 +97,91 @@ public class IssueTest {
 	 */
 	@Test
 	public void testGetOwner() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.getResolution()
 	 */
 	@Test
 	public void testGetResolution() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.getStateName()
 	 */
 	@Test
 	public void testGetStateName() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.getSummary()
 	 */
 	@Test
 	public void testGetSummary() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.isConfirmed()
 	 */
 	@Test
 	public void testIsConfirmed() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.setConfirmed()
 	 */
 	@Test
 	public void testSetConfirmed() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.setIssueId()
 	 */
 	@Test
 	public void testSetIssueId() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.setIssueType()
 	 */
 	@Test
 	public void testSetIssueType() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.setNotes()
 	 */
 	@Test
 	public void testNotes() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.setOwner()
 	 */
 	@Test
 	public void testSetOwner() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.setResolution()
 	 */
 	@Test
 	public void testSetResolution() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.setState()
 	 */
 	@Test
 	public void testSetState() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.setSummary()
 	 */
 	@Test
 	public void testSetSummary() {
-		
+		fail();
 	}
 	/**
 	 * Tests Issue.toString()
@@ -200,7 +201,7 @@ public class IssueTest {
 	 */
 	@Test
 	public void testUpdate() {
-		
+		fail();
 	}
 	
 	/**

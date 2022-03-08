@@ -30,12 +30,12 @@ public class IssueList {
 	/**
 	 * Adds Issue to list
 	 * @param type Issue type
-	 * @param x Issue ownerId
-	 * @param y Issue note
+	 * @param summary Issue summary
+	 * @param note Issue note
 	 * @return Issue id
 	 */
-	public int addIssue(IssueType type, String x, String y) {
-		Issue i = new Issue(counter, type, x, y);
+	public int addIssue(IssueType type, String summary, String note) {
+		Issue i = new Issue(counter, type, summary, note);
 		issues.add(i);
 		counter++;
 		return counter;
@@ -49,8 +49,12 @@ public class IssueList {
 		for (int i = 0; i < issues1.size(); i++) {
 			addIssue(issues1.get(i));
 		}
-		counter = issues.get(issues.size() - 1).getIssueId() + 1;
-		
+//		if (issues.size() >= 1) {
+//			counter = issues.get(issues.size() - 1).getIssueId() + 1;
+//		}
+//		else {
+//			counter = 1;
+//		}
 	}
 	/**
 	 * Adds Issue to list
@@ -62,7 +66,12 @@ public class IssueList {
 				issues.add(i, x);
 			}
 		}
-		counter = issues.get(issues.size() - 1).getIssueId() + 1;
+		if (issues.size() >= 1) {
+			counter = issues.get(issues.size() - 1).getIssueId() + 1;
+		}
+		else {
+			counter = 1;
+		}
 	}
 	/**
 	 * Returns list of Issues

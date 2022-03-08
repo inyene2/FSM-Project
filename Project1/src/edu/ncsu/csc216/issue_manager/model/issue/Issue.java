@@ -92,7 +92,7 @@ public class Issue {
 	 * @param notes1 Issue notes
 	 */
 	public Issue (int id, String state, String type, String sum, String owner1, boolean confirmed1, String resolution1, ArrayList<String> notes1) {
-		if (type == null || sum == null || sum.length() == 0 || notes1 == null || notes1.size() == 0 || id < 1 || owner1 == null || owner1.length() == 0 || resolution1 == null || resolution1.length() == 0) {
+		if (type == null || sum == null || sum.length() == 0 || notes1 == null || notes1.size() == 0 || id < 1 || owner1 == null || resolution1 == null) {
 			throw new IllegalArgumentException("Issue cannot be created.");
 		}
 		else {
@@ -176,7 +176,10 @@ public class Issue {
 	 * @param x resolution
 	 */
 	private void setResolution(String x) {
-		if (x.charAt(0) == 'f' || x.charAt(0) == 'F') {
+		if (x.length() == 0) {
+			resolution = null;
+		}
+		else if (x.charAt(0) == 'f' || x.charAt(0) == 'F') {
 			resolution = Resolution.FIXED;
 		}
 		else if (x.charAt(0) == 'd' || x.charAt(0) == 'D') {

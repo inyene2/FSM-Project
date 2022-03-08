@@ -4,10 +4,7 @@
 package edu.ncsu.csc216.issue_manager.model.io;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.Test;
