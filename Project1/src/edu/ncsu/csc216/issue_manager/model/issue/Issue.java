@@ -244,7 +244,7 @@ public class Issue {
 		else if (resolution == Resolution.FIXED)
 			return "Fixed";
 		else if (resolution == Resolution.WONTFIX)
-			return "Duplicate";
+			return "WontFix";
 		else if (resolution == Resolution.WORKSFORME)
 			return "WorksForMe";
 		else
@@ -391,6 +391,7 @@ public class Issue {
 					addNote(x.getNote());
 				}
 				else if (getIssueType() == I_BUG && isConfirmed() && owner == null) {
+					confirmed = true;
 					state = confirmedState;
 					addNote(x.getNote());
 				}
@@ -458,6 +459,7 @@ public class Issue {
 				addNote(x.getNote());
 			}
 			else if (getIssueType() == I_BUG && x.getCommand() == CommandValue.CONFIRM) {
+				confirmed = true;
 				state = confirmedState;
 				addNote(x.getNote());
 			}
