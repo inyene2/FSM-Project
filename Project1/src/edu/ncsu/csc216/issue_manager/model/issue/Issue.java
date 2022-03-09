@@ -468,6 +468,11 @@ public class Issue {
 				state = closedState;
 				addNote(x.getNote());
 			}
+			else if (getIssueType() == I_ENHANCEMENT && x.getCommand() == CommandValue.RESOLVE && x.getResolution() == Resolution.WONTFIX) {
+				resolution = x.getResolution();
+				state = closedState;
+				addNote(x.getNote());
+			}
 			else {
 				throw new UnsupportedOperationException("Invalid information.");
 			}
