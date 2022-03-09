@@ -333,7 +333,7 @@ public class IssueTest {
 		i3.update(c);
 		assertEquals("Closed", i3.getStateName());
 		
-		Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
+		//Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
 		Exception e1 = assertThrows(UnsupportedOperationException.class, () -> i1.update(c1));
 		assertEquals("Invalid information.", e1.getMessage());
 		

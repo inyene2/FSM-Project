@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import edu.ncsu.csc216.issue_manager.model.issue.Issue;
+
 import edu.ncsu.csc216.issue_manager.model.issue.Issue.IssueType;
 
 /**
@@ -120,7 +120,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testLoadIssuesFromFile() {
-		
+		fail();
 	}
 	
 	/**
@@ -133,5 +133,6 @@ public class IssueManagerTest {
 		a.add("dis fire");
 		manager.addIssueToList(IssueType.BUG, "summary", "note");
 		manager.saveIssuesToFile("test-files/actual_file");
+		fail();
 	}
 }
