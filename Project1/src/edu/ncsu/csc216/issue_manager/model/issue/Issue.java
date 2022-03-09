@@ -70,7 +70,7 @@ public class Issue {
 		else {
 			issueId = id;
 			summary = sum;
-			owner = "";
+			owner = null;
 			confirmed = false;
 			issueType = type;
 			resolution = null;
