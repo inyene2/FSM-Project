@@ -406,6 +406,7 @@ public class Issue {
 				}
 			}
 			else {
+				resolution = Resolution.FIXED;
 				throw new UnsupportedOperationException("Invalid information.");
 			}
 		}
