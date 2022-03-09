@@ -380,23 +380,28 @@ public class Issue {
 			if (x.getCommand() == CommandValue.REOPEN) {
 				if (getIssueType() == I_ENHANCEMENT && owner != null) {
 					state = workingState;
+					resolution = x.getResolution();
 					addNote(x.getNote());
 				}
 				else if (getIssueType() == I_ENHANCEMENT && owner == null) {
 					state = newState;
+					resolution = x.getResolution();
 					addNote(x.getNote());
 				}
 				else if (getIssueType() == I_BUG && isConfirmed() && owner != null) {
 					state = workingState;
+					resolution = x.getResolution();
 					addNote(x.getNote());
 				}
 				else if (getIssueType() == I_BUG && isConfirmed() && owner == null) {
-					confirmed = true;
 					state = confirmedState;
+					confirmed = true;
+					resolution = x.getResolution();
 					addNote(x.getNote());
 				}
 				else if (getIssueType() == I_BUG  && isConfirmed() == false && owner == null){
 					state = newState;
+					resolution = x.getResolution();
 					addNote(x.getNote());
 				}
 			}
