@@ -376,15 +376,15 @@ public class Issue {
 					state = newState;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_BUG && isConfirmed() && (owner != null || owner.length() != 0)) {
+				else if (getIssueType() == I_BUG && isConfirmed() == true && (owner != null || owner.length() != 0)) {
 					state = workingState;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_BUG && isConfirmed() && (owner == null || owner.length() == 0)) {
+				else if (getIssueType() == I_BUG && isConfirmed() == true && (owner == null || owner.length() == 0)) {
 					state = confirmedState;
 					addNote(x.getNote());
 				}
-				else if ((getIssueType() == I_BUG  && isConfirmed()) || getIssueType() == I_ENHANCEMENT && (owner == null || owner.length() == 0)){
+				else if (getIssueType() == I_BUG  && isConfirmed() == false && (owner == null || owner.length() == 0)){
 					state = newState;
 					addNote(x.getNote());
 				}

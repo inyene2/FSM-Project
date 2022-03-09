@@ -3,9 +3,15 @@
  */
 package edu.ncsu.csc216.issue_manager.model.manager;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
+
+import edu.ncsu.csc216.issue_manager.model.issue.Issue;
+import edu.ncsu.csc216.issue_manager.model.issue.Issue.IssueType;
 
 /**
  * Tests IssueManager class
@@ -18,7 +24,8 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testManager() {
-		fail();
+		IssueManager manager = IssueManager.getInstance();
+		assertEquals(0, manager.getIssueListAsArray());
 	}
 	
 	/**
@@ -26,7 +33,13 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testAddIssueToList() {
-		fail();
+		IssueManager manager = IssueManager.getInstance();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		//Issue i = new Issue(1, "new", "enhancement", "summary", "owner", false, "worksforme", a);
+		manager.addIssueToList(IssueType.BUG, "summary", "note");
+		assertEquals(1, manager.getIssueListAsArray().length);
+		
 	}
 	
 	/**
@@ -34,7 +47,13 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testCreateNewIssuesList() {
-		fail();
+		IssueManager manager = IssueManager.getInstance();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		manager.addIssueToList(IssueType.BUG, "summary", "note");
+		assertEquals(1, manager.getIssueListAsArray().length);
+		manager.createNewIssueList();
+		assertEquals(0, manager.getIssueListAsArray().clone().length);
 	}
 	
 	/**
@@ -42,7 +61,13 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testDeleteIssueById() {
-		fail();
+		IssueManager manager = IssueManager.getInstance();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		manager.addIssueToList(IssueType.BUG, "summary", "note");
+		assertEquals(1, manager.getIssueListAsArray().length);
+		manager.deleteIssueById(1);
+		assertEquals(0, manager.getIssueListAsArray().length);
 	}
 	
 	/**
@@ -58,7 +83,12 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testGetIssueById() {
-		fail();
+		IssueManager manager = IssueManager.getInstance();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		manager.addIssueToList(IssueType.BUG, "summary", "note");
+		assertEquals(1, manager.getIssueListAsArray().length);
+		assertEquals("summary", manager.getIssueById(1).getSummary());
 	}
 	
 	/**
@@ -66,7 +96,11 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testGetIssueListAsArray() {
-		fail();
+		IssueManager manager = IssueManager.getInstance();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		manager.addIssueToList(IssueType.BUG, "summary", "note");
+		assertEquals(1, manager.getIssueListAsArray().length);
 	}
 	
 	/**
@@ -74,7 +108,11 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testGetIssueListAsArrayByIssueType() {
-		fail();
+		IssueManager manager = IssueManager.getInstance();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		manager.addIssueToList(IssueType.BUG, "summary", "note");
+		assertEquals(0, manager.getIssueListAsArrayByIssueType("Enhancement").length);
 	}
 	
 	/**
@@ -82,7 +120,7 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testLoadIssuesFromFile() {
-		fail();
+		
 	}
 	
 	/**
@@ -90,6 +128,10 @@ public class IssueManagerTest {
 	 */
 	@Test
 	public void testSaveIssuesToFile() {
-		fail();
+		IssueManager manager = IssueManager.getInstance();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		manager.addIssueToList(IssueType.BUG, "summary", "note");
+		manager.saveIssuesToFile("test-files/actual_file");
 	}
 }

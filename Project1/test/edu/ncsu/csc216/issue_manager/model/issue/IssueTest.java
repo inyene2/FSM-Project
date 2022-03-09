@@ -315,6 +315,7 @@ public class IssueTest {
 		a.add("dis fire");
 		Issue i = new Issue(1, "closed", "enhancement", "summary", "owner", false, "fixed", a);
 		Command c = new Command(CommandValue.REOPEN, "ownerId", Resolution.FIXED, "note");
+		Command c1 = new Command(CommandValue.RESOLVE, "ownerId", Resolution.WONTFIX, "note");
 		i.update(c);
 		assertEquals("owner", i.getOwner());
 		assertEquals("Working", i.getStateName());
@@ -324,15 +325,15 @@ public class IssueTest {
 		assertEquals("owner", i.getOwner());
 		assertEquals("Working", i1.getStateName());
 		
-		Issue i2 = new Issue(1, IssueType.BUG, "summary", "note");
+		Issue i2 = new Issue(1, "closed", "bug", "summary", "owner20", true, "fixed", a);
 		Issue i3 = new Issue(1, IssueType.ENHANCEMENT, "summary", "note");
 		
 		i2.update(c);
-		assertEquals("New", i2.getStateName());
+		assertEquals("Closed", i2.getStateName());
 		i3.update(c);
-		assertEquals("New", i3.getStateName());
+		assertEquals("Closed", i3.getStateName());
 		
-		Command c1 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
+		Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
 		Exception e1 = assertThrows(UnsupportedOperationException.class, () -> i1.update(c1));
 		assertEquals("Invalid information.", e1.getMessage());
 		

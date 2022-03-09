@@ -120,8 +120,8 @@ public class IssueManager {
 	/**
 	 * Adds issue to list
 	 * @param type Issue type
-	 * @param x Issue note
-	 * @param y Issue owner
+	 * @param x Issue summary
+	 * @param y Issue note
 	 */
 	public void addIssueToList(IssueType type, String x, String y) {
 		issueList.addIssue(type, x, y);
