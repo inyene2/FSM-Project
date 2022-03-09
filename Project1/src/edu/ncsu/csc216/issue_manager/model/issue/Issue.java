@@ -278,7 +278,7 @@ public class Issue {
 	public String getNotesString() {
 		String listOfNotes = "";
 		for (int i = 0; i < notes.size(); i++) {
-			listOfNotes = listOfNotes + "-" + "[" + getIssueType() + "] " + notes.get(i) + "\n";
+			listOfNotes = listOfNotes + "-" +  notes.get(i) + "\n";
 		}
 		return listOfNotes;
 	}
