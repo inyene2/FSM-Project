@@ -244,14 +244,17 @@ public class Issue {
 		else if (resolution == Resolution.WORKSFORME)
 			return "WorksForMe";
 		else
-			return "";
+			return null;
 	}
 	/**
 	 * Returns Issue owner
 	 * @return owner
 	 */
 	public String getOwner() {
-		return owner;
+		if(owner.length() == 0)
+			return null;
+		else
+			return owner;
 	}
 	/**
 	 * Gets Issue summary
@@ -457,7 +460,7 @@ public class Issue {
 				state = confirmedState;
 				addNote(x.getNote());
 			}
-			else if (x.getCommand() == CommandValue.RESOLVE) {
+			else if (x.getCommand() == CommandValue.RESOLVE && x.getResolution() == ) {
 				resolution = x.getResolution();
 				state = closedState;
 				addNote(x.getNote());
