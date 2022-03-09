@@ -70,7 +70,7 @@ public class Issue {
 		else {
 			issueId = id;
 			summary = sum;
-			owner = null;
+			owner = "";
 			confirmed = false;
 			issueType = type;
 			resolution = null;
@@ -162,9 +162,9 @@ public class Issue {
 	 * @param x owner
 	 */
 	private void setOwner(String x) {
-		if(owner.length() == 0) {
-			owner = null;
-		}
+//		if(owner.length() == 0) {
+//			owner = null;
+//		}
 			
 		owner = x;
 	}
