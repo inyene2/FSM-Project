@@ -542,7 +542,7 @@ public class Issue {
 		@Override
 		public void updateState(Command x) {
 			if (x.getCommand() == CommandValue.VERIFY) {
-				resolution = x.getResolution();
+				resolution = Resolution.FIXED;
 				state = closedState;
 				addNote(x.getNote());
 			}
