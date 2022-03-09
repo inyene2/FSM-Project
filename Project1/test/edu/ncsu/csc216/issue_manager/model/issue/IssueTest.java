@@ -327,11 +327,13 @@ public class IssueTest {
 		
 		Issue i2 = new Issue(1, "closed", "bug", "summary", "owner20", true, "fixed", a);
 		Issue i3 = new Issue(1, IssueType.ENHANCEMENT, "summary", "note");
+		Issue i4 = new Issue(1, "closed", "bug", "summary", "owner20", false, "fixed", a);
 		
 		i2.update(c);
 		assertEquals("Closed", i2.getStateName());
 		i3.update(c);
 		assertEquals("Closed", i3.getStateName());
+		i4.update(c);
 		
 		//Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
 		Exception e1 = assertThrows(UnsupportedOperationException.class, () -> i1.update(c1));
