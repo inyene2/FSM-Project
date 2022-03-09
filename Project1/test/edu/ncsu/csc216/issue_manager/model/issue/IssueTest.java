@@ -32,7 +32,7 @@ public class IssueTest {
 	public void testIssueAllParameters() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "new", "enhancement", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
 		assertEquals(1, i.getIssueId());
 		assertEquals("New", i.getStateName());
 		assertEquals("Enhancement", i.getIssueType());
@@ -89,7 +89,7 @@ public class IssueTest {
 		a.add("deez");
 		a.add("nuts");
 		a.add("candace");
-		Issue i = new Issue(1, "new", "enhancement", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
 		assertEquals("-[Enhancement] dis fire\n" + "-[Enhancement] deez\n" + "-[Enhancement] nuts\n" + "-[Enhancement] candace\n", i.getNotesString());
 	}
 	/**
@@ -193,7 +193,7 @@ public class IssueTest {
 		a.add("deez");
 		a.add("nuts");
 		a.add("candace");
-		Issue i = new Issue(1, "new", "enhancement", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
 		assertEquals("*1,New,Enhancement,summary,owner,false,WorksForMe\n" + "-[Enhancement] dis fire\n" + "-[Enhancement] deez\n" + "-[Enhancement] nuts\n" + "-[Enhancement] candace\n", i.toString());
 	}
 	/**
@@ -211,18 +211,18 @@ public class IssueTest {
 	public void testNewState() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "new", "enhancement", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
 		Command c = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WORKSFORME, "note");
 		i.update(c);
 		assertEquals("ownerId", i.getOwner());
 		assertEquals("Working", i.getStateName());
 		
-		Issue i1 = new Issue(1, "new", "bug", "summary", "owner", false, "worksforme", a);
+		Issue i1 = new Issue(1, "New", "Bug", "summary", "owner", false, "WorksForMe", a);
 		Command c1 = new Command(CommandValue.CONFIRM, "ownerId", Resolution.WORKSFORME, "note");
 		i1.update(c1);
 		assertEquals("Confirmed", i1.getStateName());
 		
-		Issue i2 = new Issue(1, "new", "bug", "summary", "owner", false, "worksforme", a);
+		Issue i2 = new Issue(1, "New", "Bug", "summary", "owner", false, "WorksForMe", a);
 		Command c2 = new Command(CommandValue.RESOLVE, "ownerId", Resolution.WORKSFORME, "note");
 		i2.update(c2);
 		assertEquals("WorksForMe", i2.getResolution());
@@ -240,18 +240,18 @@ public class IssueTest {
 	public void testWorkingState() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "working", "enhancement", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "Working", "Enhancement", "summary", "owner", false, "WorksForMe", a);
 		Command c = new Command(CommandValue.RESOLVE, "ownerId", Resolution.FIXED, "note");
 		i.update(c);
 		assertEquals("owner", i.getOwner());
 		assertEquals("Verifying", i.getStateName());
 		
-		Issue i1 = new Issue(1, "new", "bug", "summary", "owner", false, "worksforme", a);
+		Issue i1 = new Issue(1, "New", "Bug", "summary", "owner", false, "WorksForMe", a);
 		Command c1 = new Command(CommandValue.RESOLVE, "ownerId", Resolution.WORKSFORME, "note");
 		i1.update(c1);
 		assertEquals("Closed", i1.getStateName());
 		
-		Issue i2 = new Issue(1, "new", "bug", "summary", "owner", false, "worksforme", a);
+		Issue i2 = new Issue(1, "New", "Bug", "summary", "owner", false, "WorksForMe", a);
 		Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WORKSFORME, "note");
 		Exception e1 = assertThrows(UnsupportedOperationException.class, () -> i2.update(c2));
 		assertEquals("Invalid information.", e1.getMessage());
@@ -265,13 +265,13 @@ public class IssueTest {
 	public void testConfirmedState() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "confirmed", "bug", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "Confirmed", "Bug", "summary", "owner", false, "WorksForMe", a);
 		Command c = new Command(CommandValue.ASSIGN, "ownerId", Resolution.FIXED, "note");
 		i.update(c);
 		assertEquals("ownerId", i.getOwner());
 		assertEquals("Working", i.getStateName());
 		
-		Issue i1 = new Issue(1, "confirmed", "bug", "summary", "owner", false, "worksforme", a);
+		Issue i1 = new Issue(1, "Confirmed", "Bug", "summary", "owner", false, "WorksForMe", a);
 		Command c1 = new Command(CommandValue.RESOLVE, "ownerId", Resolution.WONTFIX, "note");
 		Command c2 = new Command(CommandValue.RESOLVE, "ownerId", Resolution.FIXED, "note");
 		i1.update(c1);
@@ -289,13 +289,13 @@ public class IssueTest {
 	public void testVerifyingState() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "verifying", "bug", "summary", "owner", false, "fixed", a);
+		Issue i = new Issue(1, "Verifying", "Bug", "summary", "owner", false, "Fixed", a);
 		Command c = new Command(CommandValue.VERIFY, "ownerId", Resolution.FIXED, "note");
 		i.update(c);
 		assertEquals("owner", i.getOwner());
 		assertEquals("Closed", i.getStateName());
 		
-		Issue i1 = new Issue(1, "verifying", "enhancement", "summary", "owner", false, "fixed", a);
+		Issue i1 = new Issue(1, "Verifying", "Enhancement", "summary", "owner", false, "Fixed", a);
 		Command c1 = new Command(CommandValue.REOPEN, "ownerId", Resolution.WONTFIX, "note");
 		Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
 		i1.update(c1);
@@ -313,11 +313,11 @@ public class IssueTest {
 	public void testClosedState() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "closed", "enhancement", "summary", "owner", false, "fixed", a);
-		Issue i1 = new Issue(1, "closed", "bug", "summary", "owner", true, "fixed", a);
-		Issue i2 = new Issue(1, "closed", "bug", "summary", "", true, "fixed", a);
-		Issue i3 = new Issue(1, "closed", "enhancement", "summary", "", true, "fixed", a);
-		Issue i4 = new Issue(1, "closed", "bug", "summary", "", false, "fixed", a);
+		Issue i = new Issue(1, "Closed", "Enhancement", "summary", "owner", false, "Fixed", a);
+		Issue i1 = new Issue(1, "Closed", "Bug", "summary", "owner", true, "Fixed", a);
+		Issue i2 = new Issue(1, "Closed", "Bug", "summary", "", true, "Fixed", a);
+		Issue i3 = new Issue(1, "Closed", "Enhancement", "summary", "", true, "Fixed", a);
+		Issue i4 = new Issue(1, "Closed", "Bug", "summary", "", false, "Fixed", a);
 		Command c = new Command(CommandValue.REOPEN, "ownerId", Resolution.FIXED, "note");
 		Command c1 = new Command(CommandValue.RESOLVE, "ownerId", Resolution.WONTFIX, "note");
 		i.update(c);
@@ -340,7 +340,7 @@ public class IssueTest {
 		assertEquals(null, i4.getOwner());
 		assertEquals("New", i4.getStateName());
 		
-		Issue i5 = new Issue(1, "closed", "bug", "summary", "owner", true, "fixed", a);
+		Issue i5 = new Issue(1, "Closed", "Bug", "summary", "owner", true, "Fixed", a);
 		//Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
 		Exception e1 = assertThrows(UnsupportedOperationException.class, () -> i5.update(c1));
 		assertEquals("Invalid information.", e1.getMessage());

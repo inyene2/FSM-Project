@@ -115,38 +115,44 @@ public class Issue {
 	}
 	/**
 	 * Sets Issue state
-	 * @param x state
+	 * @param state Issue state
+	 * @throws IllegalArgumentException if Issue cannot be created
 	 */
-	private void setState(String x) {
-			
-		if (x.equals(CLOSED_NAME)) {
-			state = closedState;
-		}
-		else if (x.equals(WORKING_NAME)) {
-			state = workingState;
-		}
-		else if (x.equals(NEW_NAME)) {
-			state = newState;
-		}
-		else if (x.equals(CONFIRMED_NAME)) {
-			state = confirmedState;
-		}
-		else if (x.equals(VERIFYING_NAME)) {
-			state = verifyingState;
-		}
-	}
+	private void setState(String state) {
+        if (state == null || state.length() == 0) {
+            this.state = null;
+        }
+
+        if (state.equals(NEW_NAME)) {
+            this.state = newState;
+        } else if (state.equals(WORKING_NAME)) {
+            this.state = workingState;
+        } else if (state.equals(CONFIRMED_NAME)) {
+            this.state = confirmedState;
+        } else if (state.equals(VERIFYING_NAME)) {
+            this.state = verifyingState;
+        } else if (state.equals(CLOSED_NAME)) {
+            this.state = closedState;
+        } else {
+            throw new IllegalArgumentException("Issue cannot be created.");
+        }
+    }
 	/**
 	 * Sets Issue type
-	 * @param x type
+	 * @param type type
 	 */
-	private void setIssueType(String x) {
-		if (x.equals(I_BUG)) {
+	private void setIssueType(String type) {
+		if (type == null || type.length() == 0) {
+            throw new IllegalArgumentException("Issue cannot be created.");
+        }
+		else if (type.equals(I_BUG)) {
 			issueType = IssueType.BUG;
 		}
-		else if (x.equals(I_ENHANCEMENT)) {
+		else if (type.equals(I_ENHANCEMENT)) {
 			issueType = IssueType.ENHANCEMENT;
 		}
-		//else
+		else
+			throw new IllegalArgumentException("Issue cannot be created.");
 	}
 	/**
 	 * Sets Issue summary
@@ -157,16 +163,14 @@ public class Issue {
 	}
 	/**
 	 * Sets Issue owner
-	 * @param x owner
+	 * @param owner owner
 	 */
-	private void setOwner(String x) {
-		if (x == null)
-			owner = x;
-		else if(x.length() == 0) 
-			owner = null;
-		
+	private void setOwner(String owner) {
+		if (owner == null || owner.length() == 0) {
+            this.owner = null;
+        }
 		else
-			owner = x;
+			this.owner = owner;
 	}
 	/**
 	 * Sets Issue confirmed status
@@ -177,24 +181,26 @@ public class Issue {
 	}
 	/**
 	 * Sets Issue Resolution
-	 * @param x resolution
+	 * @param resolution Issue resolution
 	 */
-	private void setResolution(String x) {
-		if (x.length() == 0) {
-			resolution = null;
+	private void setResolution(String resolution) {
+		if (resolution == null || resolution.length() == 0) {
+            this.resolution = null;
+        }
+		else if ("Fixed".equals(resolution)) {
+			this.resolution = Resolution.FIXED;
 		}
-		else if ("Fixed".equals(x)) {
-			resolution = Resolution.FIXED;
+		else if ("Duplicate".equals(resolution)) {
+			this.resolution = Resolution.DUPLICATE;
+		} 
+		else if ("WontFix".equals(resolution)) {
+			this.resolution = Resolution.WONTFIX;
+		} 
+		else if ("WorksForMe".equals(resolution)) {
+			this.resolution = Resolution.WORKSFORME;
 		}
-		else if ("Duplicate".equals(x)) {
-			resolution = Resolution.DUPLICATE;
-		} 
-		else if ("WontFix".equals(x)) {
-			resolution = Resolution.WONTFIX;
-		} 
-		else if ("WorksForMe".equals(x)) {
-			resolution = Resolution.WORKSFORME;
-		} 
+		else
+			throw new IllegalArgumentException("Issue cannot be created.");
 	}
 	/**
 	 * Sets Issue notes

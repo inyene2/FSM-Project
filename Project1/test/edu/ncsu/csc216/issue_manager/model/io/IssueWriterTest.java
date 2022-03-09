@@ -26,7 +26,7 @@ public class IssueWriterTest {
 		ArrayList<Issue> issues = new ArrayList<Issue>();
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire"); 
-		issues.add(new Issue(1, "working", "enhancement", "summary", "owner", false, "worksforme", a));
+		issues.add(new Issue(1, "Working", "Enhancement", "summary", "owner", false, "WorksForMe", a));
 
 		IssueWriter.writeIssuesToFile("test-files/actual_student_records_2.txt", issues);
 		//Check that files are same.

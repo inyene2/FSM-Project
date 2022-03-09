@@ -56,9 +56,9 @@ public class IssueListTest {
 	public void testAddIssueList() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "new", "enhancement", "summary", "owner", false, "worksforme", a);
-		Issue i1 = new Issue(3, "working", "bug", "summary", "owner", false, "worksforme", a);
-		Issue i2 = new Issue(2, "verifying", "enhancement", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		Issue i1 = new Issue(3, "Working", "Bug", "summary", "owner", false, "WorksForMe", a);
+		Issue i2 = new Issue(2, "Verifying", "Enhancement", "summary", "owner", false, "WorksForMe", a);
 		
 		ArrayList<Issue> b = new ArrayList<Issue>();
 		b.add(i);
@@ -81,9 +81,9 @@ public class IssueListTest {
 	public void testDeleteIssueById() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "new", "enhancement", "summary", "owner", false, "worksforme", a);
-		Issue i1 = new Issue(3, "working", "bug", "summary", "owner", false, "worksforme", a);
-		Issue i2 = new Issue(2, "verifying", "enhancement", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		Issue i1 = new Issue(3, "Working", "Bug", "summary", "owner", false, "WorksForMe", a);
+		Issue i2 = new Issue(2, "Verifying", "Enhancement", "summary", "owner", false, "WorksForMe", a);
 		
 		ArrayList<Issue> b = new ArrayList<Issue>();
 		b.add(i);
@@ -120,9 +120,9 @@ public class IssueListTest {
 	public void testGetIssueById() {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
-		Issue i = new Issue(1, "new", "enhancement", "deeznuts", "owner", false, "worksforme", a);
-		Issue i1 = new Issue(3, "working", "bug", "summary", "owner", false, "worksforme", a);
-		Issue i2 = new Issue(2, "verifying", "enhancement", "summary", "owner", false, "worksforme", a);
+		Issue i = new Issue(1, "New", "Enhancement", "deeznuts", "owner", false, "WorksForMe", a);
+		Issue i1 = new Issue(3, "Working", "Bug", "summary", "owner", false, "WorksForMe", a);
+		Issue i2 = new Issue(2, "Verifying", "Enhancement", "summary", "owner", false, "WorksForMe", a);
 		
 		ArrayList<Issue> b = new ArrayList<Issue>();
 		b.add(i);
@@ -153,7 +153,7 @@ public class IssueListTest {
 		il1.addIssue(IssueType.ENHANCEMENT, "summary1", "note2");
 		il1.addIssue(IssueType.BUG, "summary2", "note3");
 		il1.addIssue(IssueType.BUG, "summary3", "note4");
-		ArrayList<Issue> issues = il1.getIssuesByType("bug");
+		ArrayList<Issue> issues = il1.getIssuesByType("Bug");
 		
 		assertEquals(2, issues.size());
 		
