@@ -64,7 +64,7 @@ public class Issue {
 	 * @param note Issue notes
 	 */
 	public Issue (int id, IssueType type, String sum, String note) {
-		if (type == null || sum == null || sum.length() == 0 || note == null || note.length() == 0 || id < 1) {
+		if (id < 1 || type == null || sum == null || sum.length() == 0 || note == null || note.length() == 0) {
 			throw new IllegalArgumentException("Issue cannot be created.");
 		}
 		else {
@@ -92,7 +92,7 @@ public class Issue {
 	 * @param notes1 Issue notes
 	 */
 	public Issue (int id, String state, String type, String sum, String owner1, boolean confirmed1, String resolution1, ArrayList<String> notes1) {
-		if (type == null || sum == null || sum.length() == 0 || notes1 == null || notes1.size() == 0 || id < 1 || owner1 == null || resolution1 == null) {
+		if (id <= 0 || state.length() == 0 || type.length() == 0 || sum.length() == 0 || notes1.size() < 1) {
 			throw new IllegalArgumentException("Issue cannot be created.");
 		}
 		else {
@@ -162,11 +162,13 @@ public class Issue {
 	 * @param x owner
 	 */
 	private void setOwner(String x) {
-//		if(owner.length() == 0) {
-//			owner = null;
-//		}
-			
-		owner = x;
+		if (x == null)
+			owner = x;
+		else if(x.length() == 0) 
+			owner = null;
+		
+		else
+			owner = x;
 	}
 	/**
 	 * Sets Issue confirmed status
@@ -372,26 +374,26 @@ public class Issue {
 		@Override
 		public void updateState(Command x) {
 			if (x.getCommand() == CommandValue.REOPEN) {
-				if (getIssueType() == I_ENHANCEMENT && (owner != null || owner.length() != 0)) {
+				if (getIssueType() == I_ENHANCEMENT && owner != null) {
 					state = workingState;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_ENHANCEMENT && (owner == null || owner.length() == 0)) {
+				else if (getIssueType() == I_ENHANCEMENT && owner == null) {
 					state = newState;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_BUG && isConfirmed() == true && (owner != null || owner.length() != 0)) {
+				else if (getIssueType() == I_BUG && isConfirmed() && owner != null) {
 					state = workingState;
 					addNote(x.getNote());
 				}
-//				else if (getIssueType() == I_BUG && isConfirmed() == true && (owner == null || owner.length() == 0)) {
-//					state = confirmedState;
-//					addNote(x.getNote());
-//				}
-//				else if (getIssueType() == I_BUG  && isConfirmed() == false && (owner == null || owner.length() == 0)){
-//					state = newState;
-//					addNote(x.getNote());
-//				}
+				else if (getIssueType() == I_BUG && isConfirmed() && owner == null) {
+					state = confirmedState;
+					addNote(x.getNote());
+				}
+				else if (getIssueType() == I_BUG  && isConfirmed() == false && owner == null){
+					state = newState;
+					addNote(x.getNote());
+				}
 			}
 			else {
 				throw new UnsupportedOperationException("Invalid information.");

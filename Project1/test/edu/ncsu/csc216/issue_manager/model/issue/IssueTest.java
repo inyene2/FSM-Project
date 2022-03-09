@@ -314,30 +314,35 @@ public class IssueTest {
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("dis fire");
 		Issue i = new Issue(1, "closed", "enhancement", "summary", "owner", false, "fixed", a);
+		Issue i1 = new Issue(1, "closed", "bug", "summary", "owner", true, "fixed", a);
+		Issue i2 = new Issue(1, "closed", "bug", "summary", "", true, "fixed", a);
+		Issue i3 = new Issue(1, "closed", "enhancement", "summary", "", true, "fixed", a);
+		Issue i4 = new Issue(1, "closed", "bug", "summary", "", false, "fixed", a);
 		Command c = new Command(CommandValue.REOPEN, "ownerId", Resolution.FIXED, "note");
 		Command c1 = new Command(CommandValue.RESOLVE, "ownerId", Resolution.WONTFIX, "note");
 		i.update(c);
 		assertEquals("owner", i.getOwner());
 		assertEquals("Working", i.getStateName());
 		
-		Issue i1 = new Issue(1, "closed", "bug", "summary", "owner20", true, "fixed", a);
 		i1.update(c);
-		assertEquals("owner", i.getOwner());
+		assertEquals("owner", i1.getOwner());
 		assertEquals("Working", i1.getStateName());
 		
-		Issue i2 = new Issue(1, "closed", "bug", "summary", "owner20", true, "fixed", a);
-		Issue i3 = new Issue(1, IssueType.ENHANCEMENT, "summary", "note");
-		Issue i4 = new Issue(1, "closed", "bug", "summary", "", false, "fixed", a);
-		
 		i2.update(c);
-		assertEquals("Closed", i2.getStateName());
-		i3.update(c);
-		assertEquals("Closed", i3.getStateName());
-		i4.update(c);
-		assertEquals("Closed", i4.getStateName());
+		assertEquals(null, i2.getOwner());
+		assertEquals("Confirmed", i2.getStateName());
 		
+		i3.update(c);
+		assertEquals(null, i3.getOwner());
+		assertEquals("New", i3.getStateName());
+		
+		i4.update(c);
+		assertEquals(null, i4.getOwner());
+		assertEquals("New", i4.getStateName());
+		
+		Issue i5 = new Issue(1, "closed", "bug", "summary", "owner", true, "fixed", a);
 		//Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
-		Exception e1 = assertThrows(UnsupportedOperationException.class, () -> i1.update(c1));
+		Exception e1 = assertThrows(UnsupportedOperationException.class, () -> i5.update(c1));
 		assertEquals("Invalid information.", e1.getMessage());
 		
 	}

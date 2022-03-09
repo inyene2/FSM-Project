@@ -72,18 +72,18 @@ public class IssueReader {
 		scnr1.useDelimiter(",");
 		
 
-		int ownerId = scnr1.nextInt();
+		int issueId = scnr1.nextInt();
 		String state = scnr1.next();
 		String type = scnr1.next();
 		String summary = scnr1.next();
 		String owner1 = scnr1.next();
+		if (owner1.length() == 0)
+			owner1 = null;
 		boolean confirmed1 = scnr1.nextBoolean();
-		if (scnr1.hasNext()) {
-			resolution1 = scnr1.next();
-		}
-		else {
-			resolution1 = "";
-		}
+		if (scnr.hasNext())
+			resolution1 = scnr.next();
+		else
+			resolution1 = null;
 		scnr1.close();
 		ArrayList<String> notes1 = new ArrayList<String>();
 		
@@ -92,6 +92,6 @@ public class IssueReader {
 			notes1.add(scnr.next());
 		}
 		scnr.close();
-		return new Issue(ownerId, state, type, summary, owner1, confirmed1, resolution1, notes1);
+		return new Issue(issueId, state, type, summary, owner1, confirmed1, resolution1, notes1);
 	}
 }

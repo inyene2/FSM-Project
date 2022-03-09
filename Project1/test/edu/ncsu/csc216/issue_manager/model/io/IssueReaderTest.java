@@ -48,7 +48,7 @@ public class IssueReaderTest {
 		assertEquals("New", issues.get(0).getStateName());
         assertEquals("Enhancement", issues.get(0).getIssueType());
         assertEquals("Issue description", issues.get(0).getSummary());
-        assertEquals("", issues.get(0).getOwner());
+        assertEquals(null, issues.get(0).getOwner());
         assertFalse(issues.get(0).isConfirmed());
         //assertEquals("[New] Note 1", issues.get(0).getNotesString());
 	}
