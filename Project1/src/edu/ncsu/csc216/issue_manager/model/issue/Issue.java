@@ -460,7 +460,7 @@ public class Issue {
 				state = confirmedState;
 				addNote(x.getNote());
 			}
-			else if (x.getCommand() == CommandValue.RESOLVE && x.getResolution() == ) {
+			else if (x.getCommand() == CommandValue.RESOLVE) {
 				resolution = x.getResolution();
 				state = closedState;
 				addNote(x.getNote());
