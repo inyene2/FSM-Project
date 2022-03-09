@@ -118,23 +118,21 @@ public class Issue {
 	 * @param x state
 	 */
 	private void setState(String x) {
-		if (x.charAt(1) == 'l' || x.charAt(0) == 'L') {
+			
+		if (x.equals(CLOSED_NAME)) {
 			state = closedState;
 		}
-		else if (x.charAt(0) == 'w' || x.charAt(0) == 'W') {
+		else if (x.equals(WORKING_NAME)) {
 			state = workingState;
 		}
-		else if (x.charAt(0) == 'n' || x.charAt(0) == 'N') {
+		else if (x.equals(NEW_NAME)) {
 			state = newState;
 		}
-		else if (x.charAt(0) == 'c' || x.charAt(0) == 'C') {
+		else if (x.equals(CONFIRMED_NAME)) {
 			state = confirmedState;
 		}
-		else if (x.charAt(0) == 'v' || x.charAt(0) == 'V') {
+		else if (x.equals(VERIFYING_NAME)) {
 			state = verifyingState;
-		}
-		else {
-			state = null;
 		}
 	}
 	/**
@@ -142,10 +140,10 @@ public class Issue {
 	 * @param x type
 	 */
 	private void setIssueType(String x) {
-		if (x.charAt(0) == 'b' || x.charAt(0) == 'B') {
+		if (x.equals(I_BUG)) {
 			issueType = IssueType.BUG;
 		}
-		else if (x.charAt(0) == 'e' || x.charAt(0) == 'E') {
+		else if (x.equals(I_ENHANCEMENT)) {
 			issueType = IssueType.ENHANCEMENT;
 		}
 		//else
@@ -185,16 +183,16 @@ public class Issue {
 		if (x.length() == 0) {
 			resolution = null;
 		}
-		else if (x.charAt(0) == 'f' || x.charAt(0) == 'F') {
+		else if ("Fixed".equals(x)) {
 			resolution = Resolution.FIXED;
 		}
-		else if (x.charAt(0) == 'd' || x.charAt(0) == 'D') {
+		else if ("Duplicate".equals(x)) {
 			resolution = Resolution.DUPLICATE;
 		} 
-		else if (x.charAt(2) == 'n' || x.charAt(0) == 'N') {
+		else if ("WontFix".equals(x)) {
 			resolution = Resolution.WONTFIX;
 		} 
-		else if (x.charAt(2) == 'r' || x.charAt(0) == 'R') {
+		else if ("WorksForMe".equals(x)) {
 			resolution = Resolution.WORKSFORME;
 		} 
 	}
