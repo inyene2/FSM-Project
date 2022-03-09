@@ -424,6 +424,7 @@ public class Issue {
 			if (x.getCommand() == CommandValue.RESOLVE) {
 				if (x.getResolution() == Resolution.FIXED) {
 					state = verifyingState;
+					resolution = x.getResolution();
 					addNote(x.getNote());
 				}
 				else {
