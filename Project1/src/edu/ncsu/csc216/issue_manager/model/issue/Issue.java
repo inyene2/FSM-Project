@@ -249,10 +249,7 @@ public class Issue {
 	 * @return owner
 	 */
 	public String getOwner() {
-		if(owner.length() == 0)
-			return null;
-		else
-			return owner;
+		return owner;
 	}
 	/**
 	 * Gets Issue summary
