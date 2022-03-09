@@ -535,6 +535,7 @@ public class Issue {
 		@Override
 		public void updateState(Command x) {
 			if (x.getCommand() == CommandValue.VERIFY) {
+				resolution = x.getResolution();
 				state = closedState;
 				addNote(x.getNote());
 			}
