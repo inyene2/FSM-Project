@@ -38,6 +38,7 @@ public class IssueList {
 	public int addIssue(IssueType type, String summary, String note) {
 		Issue i = new Issue(counter, type, summary, note);
 		addIssue(i);
+		counter++;
 		return counter;
 	}
 	
