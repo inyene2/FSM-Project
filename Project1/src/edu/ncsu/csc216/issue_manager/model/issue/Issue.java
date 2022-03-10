@@ -281,10 +281,9 @@ public class Issue {
 	 */
 	public String getNotesString() {
 		String listOfNotes = "";
-		for (int i = 0; i < notes.size() - 1; i++) {
+		for (int i = 0; i < notes.size(); i++) {
 			listOfNotes = listOfNotes + "-" +  notes.get(i) + '\n';
 		}
-		listOfNotes = listOfNotes + "-" + notes.get(notes.size() - 1);
 		return listOfNotes;
 	}
 	/**
