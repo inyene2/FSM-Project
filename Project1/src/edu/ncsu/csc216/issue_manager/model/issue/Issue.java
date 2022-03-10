@@ -95,6 +95,8 @@ public class Issue {
 		if (id <= 0 || state == null || state.length() == 0 || type == null || type.length() == 0 || sum == null || sum.length() == 0 || notes1.size() < 1) {
 			throw new IllegalArgumentException("Issue cannot be created.");
 		}
+		else if (state.equals(VERIFYING_NAME) || state.equals(WORKING_NAME) && (owner1 == null || owner.length() == 0))
+			throw new UnsupportedOperationException("Invalid information.");
 		else {
 			setIssueId(id);
 			setSummary(sum);
