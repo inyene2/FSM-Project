@@ -474,10 +474,9 @@ public class Issue {
 				addNote(x.getNote());
 			}
 			else if (getIssueType() == I_BUG && x.getCommand() == CommandValue.RESOLVE) {
-				throw new UnsupportedOperationException("Invalid information.");
-//				resolution = x.getResolution();
-//				state = closedState;
-//				addNote(x.getNote());
+				resolution = x.getResolution();
+				state = closedState;
+				addNote(x.getNote());
 			}
 			else if (getIssueType() == I_ENHANCEMENT && x.getCommand() == CommandValue.RESOLVE && x.getResolution() == Resolution.WONTFIX || x.getResolution() == Resolution.DUPLICATE) {
 				resolution = x.getResolution();
