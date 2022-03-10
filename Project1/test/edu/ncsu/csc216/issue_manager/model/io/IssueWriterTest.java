@@ -39,7 +39,7 @@ public class IssueWriterTest {
 		IssueWriter.writeIssuesToFile("test-files/actual_issues_records.txt", issues);
 		//Check that files are same.
 
-		checkFiles("test-files/issues2.txt", "test-files/actual_issues_records.txt");
+		checkFiles("test-files/issue2.txt", "test-files/actual_issues_records.txt");
 
 		Exception exception = assertThrows(IllegalArgumentException.class,
 				() -> IssueWriter.writeIssuesToFile("/home/sesmith5/actual_student_records.txt", issues));
