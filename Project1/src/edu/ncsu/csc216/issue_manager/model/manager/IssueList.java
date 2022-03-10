@@ -6,6 +6,7 @@ package edu.ncsu.csc216.issue_manager.model.manager;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import edu.ncsu.csc216.issue_manager.model.command.Command;
 import edu.ncsu.csc216.issue_manager.model.issue.Issue;
 import edu.ncsu.csc216.issue_manager.model.issue.Issue.IssueType;
@@ -37,7 +38,6 @@ public class IssueList {
 	public int addIssue(IssueType type, String summary, String note) {
 		Issue i = new Issue(counter, type, summary, note);
 		addIssue(i);
-		counter++;
 		return counter;
 	}
 	
@@ -49,7 +49,6 @@ public class IssueList {
 		for (int i = 0; i < issues1.size(); i++) {
 			addIssue(issues1.get(i));
 		}
-			counter = issues.get(issues.size() - 1).getIssueId() + 1;
 	}
 	/**
 	 * Adds Issue to list
@@ -63,23 +62,43 @@ public class IssueList {
 		}
 		if (issues.size() == 0) {
 			issues.add(x);
+			counter = x.getIssueId() + 1;
+			return;
 		}
-		else {
-			for (int i = 0; i < issues.size(); i++) {
-				if (x.getIssueId() < issues.get(i).getIssueId()) {
-					issues.add(i, x);
-				}
+		else if (issues.size() == 1) {
+			if (x.getIssueId() < issues.get(0).getIssueId()) {
+				issues.add(0, x);
+				counter = issues.get(issues.size() - 1).getIssueId() + 1;
+				return;
+			}
+			else {
+				issues.add(x);
+				counter = issues.get(issues.size() - 1).getIssueId() + 1;
+				return;
 			}
 		}
 		
-		issues.add(x);
-		
-//		if (issues.size() >= 1) {
-//			counter = issues.get(issues.size() - 1).getIssueId() + 1;
-//		}
-//		else {
-//			counter = 1;
-//		}
+		else {
+			if (x.getIssueId() < issues.get(0).getIssueId()) {
+				issues.add(0, x);
+				counter = issues.get(issues.size() - 1).getIssueId() + 1;
+				return;
+			}
+			else if (x.getIssueId() > issues.get(issues.size() - 1).getIssueId()) {
+				issues.add(x);
+				counter = issues.get(issues.size() - 1).getIssueId() + 1;
+				return;
+			}
+			else {
+				for (int i = 1; i < issues.size(); i++) {
+					if (x.getIssueId() > issues.get(i - 1).getIssueId() && x.getIssueId() < issues.get(i).getIssueId()) {
+						issues.add(i, x);
+						counter = issues.get(issues.size() - 1).getIssueId() + 1;
+						return;
+					}
+				}
+			}
+		}
 	}
 	/**
 	 * Returns list of Issues
