@@ -37,7 +37,7 @@ public class IssueWriter {
 
 		for (int i = 0; i < issues.size(); i++) {
 			Issue issue = issues.get(i);
-			fileWriter.println(issue.toString());
+			fileWriter.print(issue.toString());
 		}
 
 		fileWriter.close();
