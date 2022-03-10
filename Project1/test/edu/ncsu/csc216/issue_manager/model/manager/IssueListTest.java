@@ -3,7 +3,7 @@
  */
 package edu.ncsu.csc216.issue_manager.model.manager;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,9 +68,9 @@ public class IssueListTest {
 		il1.addIssues(b);
 		
 		assertEquals(3, il1.getIssues().size());
-		assertTrue("New".equals(il1.getIssues().get(0).getStateName()));
-		assertTrue("Verifying".equals(il1.getIssues().get(1).getStateName()));
-		assertTrue("Working".equals(il1.getIssues().get(2).getStateName()));
+		assertEquals("New", il1.getIssues().get(0).getStateName());
+		assertEquals("Verifying", il1.getIssues().get(1).getStateName());
+		assertEquals("Working", il1.getIssues().get(2).getStateName());
 
 	}
 

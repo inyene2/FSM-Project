@@ -280,11 +280,20 @@ public class Issue {
 	 * @return notes
 	 */
 	public String getNotesString() {
-		String listOfNotes = "";
-		for (int i = 0; i < notes.size(); i++) {
-			listOfNotes = listOfNotes + "-" +  notes.get(i) + '\n';
-		}
-		return listOfNotes;
+		String notesList = "";
+
+        if (notes.size() > 1) {
+            for (int i = 0; i < notes.size() - 1; i++) {
+                notesList = notesList + notes.get(i) + "\n";
+            }
+
+            // TODO see if this fixes linefeed problem
+            notesList = notesList + notes.get(notes.size() - 1) + "\n";
+            return notesList;
+        } else {
+            notesList = notesList + notes.get(0) + "\n";
+            return notesList; 
+        }
 	}
 	/**
 	 * Returns Issue confirmed status
