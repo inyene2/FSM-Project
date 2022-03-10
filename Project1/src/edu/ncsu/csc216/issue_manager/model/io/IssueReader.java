@@ -89,6 +89,8 @@ public class IssueReader {
 		
 		scnr.useDelimiter("\r?\n?[-]");
 		while (scnr.hasNext()) {
+			if(!scnr.next().contains("[-"))
+				throw new IllegalArgumentException();
 			notes1.add(scnr.next());
 		}
 		scnr.close();

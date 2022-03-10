@@ -21,7 +21,7 @@ import edu.ncsu.csc216.issue_manager.model.issue.Issue;
 public class IssueReaderTest {
 
 	/** Valid Issues file */
-	private final String validTestFile = "test-files/issue1.txt";
+	private final String validTestFile = "test-files/issue8.txt";
 	/** Invalid Isseus file */
 	private final String invalidTestFile = "test-files/issue0.txt";
 	
