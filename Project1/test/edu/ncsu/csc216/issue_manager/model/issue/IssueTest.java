@@ -56,7 +56,7 @@ public class IssueTest {
 		assertEquals("New", i.getStateName());
 		assertEquals("Bug", i.getIssueType());
 		assertEquals("summary", i.getSummary());
-		assertEquals("", i.getOwner());
+		assertEquals(null, i.getOwner());
 		assertFalse(i.isConfirmed());
 		assertEquals(1, i.getNotes().size());
 		assertEquals("[New] note", i.getNotes().get(0));
