@@ -292,7 +292,7 @@ public class Issue {
             return notesList;
         } 
         else {
-            notesList = notesList + "-" + notes.get(0);
+            notesList = notesList + "-" + notes.get(0) + "\n";
             return notesList; 
         }
 	}
