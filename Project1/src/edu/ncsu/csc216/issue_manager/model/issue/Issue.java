@@ -92,7 +92,7 @@ public class Issue {
 	 * @param notes1 Issue notes
 	 */
 	public Issue (int id, String state, String type, String sum, String owner1, boolean confirmed1, String resolution1, ArrayList<String> notes1) {
-		if (id <= 0 || state.length() == 0 || type.length() == 0 || sum.length() == 0 || notes1.size() < 1) {
+		if (id <= 0 || state == null || state.length() == 0 || type == null || type.length() == 0 || sum == null || sum.length() == 0 || notes1.size() < 1) {
 			throw new IllegalArgumentException("Issue cannot be created.");
 		}
 		else {
@@ -553,7 +553,7 @@ public class Issue {
 			else if (x.getCommand() == CommandValue.REOPEN) {
 				state = workingState;
 				addNote(x.getNote());
-				resolution = Resolution.WORKSFORME;
+				resolution = null;
 			}
 			else {
 				throw new UnsupportedOperationException("Invalid information.");
