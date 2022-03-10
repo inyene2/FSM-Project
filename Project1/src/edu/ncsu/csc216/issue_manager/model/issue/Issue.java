@@ -396,7 +396,7 @@ public class Issue {
 				else if (getIssueType() == I_BUG && isConfirmed() && owner == null) {
 					state = confirmedState;
 					confirmed = true;
-					resolution = x.getResolution();
+					resolution = Resolution.WONTFIX;
 					addNote(x.getNote());
 				}
 				else if (getIssueType() == I_BUG  && isConfirmed() == false && owner == null){
@@ -477,7 +477,7 @@ public class Issue {
 				state = closedState;
 				addNote(x.getNote());
 			}
-			else if (getIssueType() == I_ENHANCEMENT && x.getCommand() == CommandValue.RESOLVE && x.getResolution() == Resolution.WONTFIX) {
+			else if (getIssueType() == I_ENHANCEMENT && x.getCommand() == CommandValue.RESOLVE && x.getResolution() == Resolution.WONTFIX || x.getResolution() == Resolution.DUPLICATE) {
 				resolution = x.getResolution();
 				state = closedState;
 				addNote(x.getNote());
@@ -551,6 +551,7 @@ public class Issue {
 			else if (x.getCommand() == CommandValue.REOPEN) {
 				state = workingState;
 				addNote(x.getNote());
+				resolution = Resolution.WORKSFORME;
 			}
 			else {
 				throw new UnsupportedOperationException("Invalid information.");
