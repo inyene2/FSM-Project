@@ -80,8 +80,8 @@ public class IssueReader {
 		if (owner1.length() == 0)
 			owner1 = null;
 		boolean confirmed1 = scnr1.nextBoolean();
-		if (scnr.hasNext())
-			resolution1 = scnr.next();
+		if (scnr1.hasNext())
+			resolution1 = scnr1.next();
 		else
 			resolution1 = null;
 		scnr1.close();
