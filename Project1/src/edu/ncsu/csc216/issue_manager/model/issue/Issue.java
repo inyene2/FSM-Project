@@ -436,6 +436,7 @@ public class Issue {
 				else if(issueType == IssueType.ENHANCEMENT  && x.getResolution() == Resolution.WORKSFORME)
 					throw new UnsupportedOperationException("Invalid information.");
 				else {
+					resolution = x.getResolution();
 					addNote(x.getNote());
 					state = closedState;
 				}
