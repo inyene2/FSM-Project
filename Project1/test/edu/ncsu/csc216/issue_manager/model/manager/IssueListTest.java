@@ -92,7 +92,7 @@ public class IssueListTest {
 		IssueList il1 = new IssueList();
 		il1.addIssues(b);
 		
-		il1.deleteIssueById(0);
+		il1.deleteIssueById(1);
 		assertEquals(2, il1.getIssues().size());
 		assertTrue("Verifying".equals(il1.getIssues().get(0).getStateName()));
 		assertTrue("Working".equals(il1.getIssues().get(1).getStateName()));

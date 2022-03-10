@@ -284,14 +284,15 @@ public class Issue {
 
         if (notes.size() > 1) {
             for (int i = 0; i < notes.size() - 1; i++) {
-                notesList = notesList + notes.get(i) + "\n";
+                notesList = notesList + "-" + notes.get(i) + "\n";
             }
 
             // TODO see if this fixes linefeed problem
-            notesList = notesList + notes.get(notes.size() - 1) + "\n";
+            notesList = notesList + "-" + notes.get(notes.size() - 1) + "\n";
             return notesList;
-        } else {
-            notesList = notesList + notes.get(0) + "\n";
+        } 
+        else {
+            notesList = notesList + "-" + notes.get(0) + "\n";
             return notesList; 
         }
 	}
