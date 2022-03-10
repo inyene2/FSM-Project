@@ -437,8 +437,8 @@ public class Issue {
 					throw new UnsupportedOperationException("Invalid information.");
 				else {
 					resolution = x.getResolution();
-					addNote(x.getNote());
 					state = closedState;
+					addNote(x.getNote());
 				}
 			}
 			else {
@@ -513,6 +513,7 @@ public class Issue {
 				}
 				else if (x.getCommand() == CommandValue.RESOLVE) {
 					if (x.getResolution() == Resolution.WONTFIX) {
+						resolution = Resolution.WONTFIX;
 						state = closedState;
 						addNote(x.getNote());
 					}
