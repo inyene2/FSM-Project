@@ -252,19 +252,14 @@ public class Issue {
 		else if (resolution == Resolution.WORKSFORME)
 			return "WorksForMe";
 		else
-			return "";
+			return null;
 	}
 	/**
 	 * Returns Issue owner
 	 * @return owner
 	 */
 	public String getOwner() {
-		if (owner == null) {
-			return "";
-		}
-		else {
-			return owner;
-		}
+		return owner;
 	}
 	/**
 	 * Gets Issue summary
