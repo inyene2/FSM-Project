@@ -62,7 +62,7 @@ public class IssueManager {
 	 * Returns issues list as 2d array
 	 * @return 2d array of issues
 	 */
-	public String[][] getIssueListAsArray() {
+	public Object[][] getIssueListAsArray() {
 		String[][] issuesL = new String[issueList.getIssues().size()][4];
 		for (int i = 0; i < issueList.getIssues().size(); i++) {
 			Issue a = issueList.getIssues().get(i);

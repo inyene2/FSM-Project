@@ -118,7 +118,6 @@ public class IssueList {
 	 * @return Issue
 	 */
 	public ArrayList<Issue> getIssuesByType(String x) {
-		issues = new ArrayList<Issue>();
 		ArrayList<Issue> z = new ArrayList<Issue>();
 		if ("Bug".equals(x)) {
 			for (int i = 0; i < issues.size(); i++) {

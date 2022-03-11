@@ -105,12 +105,12 @@ public class IssueListTest {
 	@Test
 	public void testExecuteCommand() {
 		IssueList il1 = new IssueList();
-		il1.addIssue(IssueType.BUG, "summary", "note");
+		il1.addIssue(IssueType.ENHANCEMENT, "summary", "note");
 		Command c = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WORKSFORME, "note");
-		il1.executeCommand(0, c);
+		il1.executeCommand(1, c);
 		Issue i = il1.getIssues().get(0);
-		assertTrue("ownerId".equals(i.getOwner()));
-		assertTrue("Working".equals(i.getStateName()));
+		assertEquals("ownerId", (i.getOwner()));
+		assertEquals("Working", (i.getStateName()));
 	}
 
 	/**
@@ -131,8 +131,8 @@ public class IssueListTest {
 		IssueList il1 = new IssueList();
 		il1.addIssues(b);
 		
-		assertTrue("deeznuts".equals(il1.getIssueById(0).getSummary()));
-		assertTrue("Verifying".equals(il1.getIssueById(1).getStateName()));
+		assertTrue("deeznuts".equals(il1.getIssueById(1).getSummary()));
+		assertTrue("Verifying".equals(il1.getIssueById(2).getStateName()));
 	}
 
 	/**
@@ -140,7 +140,12 @@ public class IssueListTest {
 	 */
 	@Test
 	public void testGetIssues() {
-		fail();
+		IssueList il1 = new IssueList();
+		il1.addIssue(IssueType.ENHANCEMENT, "summary", "note1");
+		il1.addIssue(IssueType.ENHANCEMENT, "summary1", "note2");
+		il1.addIssue(IssueType.BUG, "summary2", "note3");
+		il1.addIssue(IssueType.BUG, "summary3", "note4");
+		assertEquals(4, il1.getIssues().size());
 	}
 
 	/**

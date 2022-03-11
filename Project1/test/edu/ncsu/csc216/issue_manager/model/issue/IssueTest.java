@@ -3,9 +3,10 @@
  */
 package edu.ncsu.csc216.issue_manager.model.issue;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
@@ -70,14 +71,16 @@ public class IssueTest {
 	 */
 	@Test
 	public void testGetIssueType() {
-		fail();
+		Issue i = new Issue(1, IssueType.BUG, "summary", "note");
+		assertEquals("Bug", i.getIssueType());
 	}
 	/**
 	 * Tests Issue.getNotes()
 	 */
 	@Test
 	public void testGetNotes() {
-		fail();
+		Issue i = new Issue(1, IssueType.BUG, "summary", "note");
+		assertEquals("[New] note", i.getNotes().get(0));
 	}
 	/**
 	 * Tests Issue.getNotesString()
@@ -90,98 +93,156 @@ public class IssueTest {
 		a.add("nuts");
 		a.add("candace");
 		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
-		assertEquals("-[Enhancement] dis fire\n" + "-[Enhancement] deez\n" + "-[Enhancement] nuts\n" + "-[Enhancement] candace\n", i.getNotesString());
+		assertEquals("-dis fire\n" + "-deez\n" + "-nuts\n" + "-candace\n", i.getNotesString());
 	}
 	/**
 	 * Tests Issue.getOwner()
 	 */
 	@Test
 	public void testGetOwner() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		a.add("deez");
+		a.add("nuts");
+		a.add("candace");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("owner", i.getOwner());
 	}
 	/**
 	 * Tests Issue.getResolution()
 	 */
 	@Test
 	public void testGetResolution() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		a.add("deez");
+		a.add("nuts");
+		a.add("candace");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("WorksForMe", i.getResolution());
 	}
 	/**
 	 * Tests Issue.getStateName()
 	 */
 	@Test
 	public void testGetStateName() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		a.add("deez");
+		a.add("nuts");
+		a.add("candace");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("New", i.getStateName());
 	}
 	/**
 	 * Tests Issue.getSummary()
 	 */
 	@Test
 	public void testGetSummary() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		a.add("deez");
+		a.add("nuts");
+		a.add("candace");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("summary", i.getSummary());
 	}
 	/**
 	 * Tests Issue.isConfirmed()
 	 */
 	@Test
 	public void testIsConfirmed() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		a.add("deez");
+		a.add("nuts");
+		a.add("candace");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertFalse(i.isConfirmed());
 	}
 	/**
 	 * Tests Issue.setConfirmed()
 	 */
 	@Test
 	public void testSetConfirmed() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		a.add("deez");
+		a.add("nuts");
+		a.add("candace");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertFalse(i.isConfirmed());
 	}
 	/**
 	 * Tests Issue.setIssueId()
 	 */
 	@Test
 	public void testSetIssueId() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("dis fire");
+		a.add("deez");
+		a.add("nuts");
+		a.add("candace");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals(1, i.getIssueId());
 	}
 	/**
 	 * Tests Issue.setIssueType()
 	 */
 	@Test
 	public void testSetIssueType() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("deez");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("Enhancement", i.getIssueType());
 	}
 	/**
 	 * Tests Issue.setNotes()
 	 */
 	@Test
 	public void testNotes() {
-		fail();
+		Issue i = new Issue(1, IssueType.BUG, "summary", "note");
+		assertEquals("[New] note", i.getNotes().get(0));
 	}
 	/**
 	 * Tests Issue.setOwner()
 	 */
 	@Test
 	public void testSetOwner() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("deez");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("owner", i.getOwner());
 	}
 	/**
 	 * Tests Issue.setResolution()
 	 */
 	@Test
 	public void testSetResolution() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("deez");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("WorksForMe", i.getResolution());
 	}
 	/**
 	 * Tests Issue.setState()
 	 */
 	@Test
 	public void testSetState() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("deez");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("New", i.getStateName());
 	}
 	/**
 	 * Tests Issue.setSummary()
 	 */
 	@Test
 	public void testSetSummary() {
-		fail();
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("deez");
+		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
+		assertEquals("summary", i.getSummary());
 	}
 	/**
 	 * Tests Issue.toString()
@@ -194,14 +255,18 @@ public class IssueTest {
 		a.add("nuts");
 		a.add("candace");
 		Issue i = new Issue(1, "New", "Enhancement", "summary", "owner", false, "WorksForMe", a);
-		assertEquals("*1,New,Enhancement,summary,owner,false,WorksForMe\n" + "-[Enhancement] dis fire\n" + "-[Enhancement] deez\n" + "-[Enhancement] nuts\n" + "-[Enhancement] candace\n", i.toString());
+		assertEquals("*1,New,Enhancement,summary,owner,false,WorksForMe\n" + "-dis fire\n" + "-deez\n" + "-nuts\n" + "-candace\n", i.toString());
 	}
 	/**
 	 * Tests Issue.update()
 	 */
 	@Test
 	public void testUpdate() {
-		fail();
+		Issue i = new Issue(1, IssueType.ENHANCEMENT, "summary", "note");
+		Command c = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WORKSFORME, "note");
+		i.update(c);
+		assertEquals("ownerId", (i.getOwner()));
+		assertEquals("Working", (i.getStateName()));
 	}
 	
 	/**

@@ -34,12 +34,12 @@ public class IssueWriterTest {
 //		a.add("dis fire"); 
 //		a.add("deez nuts");
 //		issues.add(new Issue(1, "Working", "Enhancement", "summary", "owner", false, "WorksForMe", a));
-		ArrayList<Issue> issues = (ArrayList<Issue>) IssueReader.readIssuesFromFile("test-files/issue2.txt");
+		ArrayList<Issue> issues = (ArrayList<Issue>) IssueReader.readIssuesFromFile("test-files/issue8.txt");
 
 		IssueWriter.writeIssuesToFile("test-files/actual_issues_records.txt", issues);
 		//Check that files are same.
 
-		checkFiles("test-files/issue2.txt", "test-files/actual_issues_records.txt");
+		checkFiles("test-files/issues8_2.txt", "test-files/actual_issues_records.txt");
 
 		Exception exception = assertThrows(IllegalArgumentException.class,
 				() -> IssueWriter.writeIssuesToFile("/home/sesmith5/actual_student_records.txt", issues));

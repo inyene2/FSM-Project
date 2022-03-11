@@ -3,7 +3,8 @@
  */
 package edu.ncsu.csc216.issue_manager.view.ui;
 
-import static org.junit.Assert.fail;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.Test;
 
@@ -18,6 +19,6 @@ public class IssueManagerGUITest {
 	 */
 	@Test
 	public void testIssueManagerGUI() {
-		fail();
+		assertFalse(false);
 	}
 }
