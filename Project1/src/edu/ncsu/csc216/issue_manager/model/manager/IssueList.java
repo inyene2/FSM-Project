@@ -118,7 +118,7 @@ public class IssueList {
 	 */
 	public ArrayList<Issue> getIssuesByType(String x) {
 		ArrayList<Issue> z = new ArrayList<Issue>();
-		if (x.charAt(0) == 'b' || x.charAt(0) == 'B') {
+		if ("Bug".equals(x)) {
 			for (int i = 0; i < issues.size(); i++) {
 				if (issues.get(i).getIssueType().equals("Bug")) {
 					z.add(issues.get(i));
@@ -126,7 +126,7 @@ public class IssueList {
 			}
 			return z;
 		}
-		else if (x.charAt(0) == 'E' || x.charAt(0) == 'e') {
+		else if ("Enhancement".equals(x)) {
 			for (int i = 0; i < issues.size(); i++) {
 				if (issues.get(i).getIssueType().equals("Enhancement")) {
 					z.add(issues.get(i));
