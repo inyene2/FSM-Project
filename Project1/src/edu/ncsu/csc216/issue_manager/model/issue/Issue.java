@@ -126,21 +126,22 @@ public class Issue {
         if (state == null || state.length() == 0) {
             this.state = null;
         }
-
-        if (state.equals(NEW_NAME)) {
-            this.state = newState;
-        } else if (state.equals(WORKING_NAME)) {
-            this.state = workingState;
-        } else if (state.equals(CONFIRMED_NAME)) {
-//        	if (resolution != null)
-//        		throw new IllegalArgumentException("Issue cannot be created.");
-            this.state = confirmedState;
-        } else if (state.equals(VERIFYING_NAME)) {
-            this.state = verifyingState;
-        } else if (state.equals(CLOSED_NAME)) {
-            this.state = closedState;
-        } else {
-            throw new IllegalArgumentException("Issue cannot be created.");
+        else {
+        	if (state.equals(NEW_NAME)) {
+                this.state = newState;
+            } else if (state.equals(WORKING_NAME)) {
+                this.state = workingState;
+            } else if (state.equals(CONFIRMED_NAME)) {
+//            	if (resolution != null)
+//            		throw new IllegalArgumentException("Issue cannot be created.");
+                this.state = confirmedState;
+            } else if (state.equals(VERIFYING_NAME)) {
+                this.state = verifyingState;
+            } else if (state.equals(CLOSED_NAME)) {
+                this.state = closedState;
+            } else {
+                throw new IllegalArgumentException("Issue cannot be created.");
+            }
         }
     }
 	/**
@@ -280,18 +281,6 @@ public class Issue {
 		return owner;
 	}
 	
-	/**
-	 * Returns Issue owner
-	 * @return owner
-	 */
-	private String getOwnerPrinting() {
-		if (owner == null) {
-			return "";
-		}
-		else {
-			return owner;
-		}
-	}
 	/**
 	 * Gets Issue summary
 	 * @return summary
@@ -444,7 +433,7 @@ public class Issue {
 					resolution = null;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_BUG  && isConfirmed() == false && owner == null){
+				else if (getIssueType() == I_BUG  && isConfirmed() && owner == null){
 					state = newState;
 					resolution = null;
 					addNote(x.getNote());

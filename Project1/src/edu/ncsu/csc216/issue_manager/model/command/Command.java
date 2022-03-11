@@ -42,7 +42,7 @@ public class Command {
 		else if (x == CommandValue.ASSIGN && (id == null || id.length() == 0)) {
 			throw new IllegalArgumentException("Invalid information.");
 		}
-		else if (x == CommandValue.RESOLVE && (z == null)) {
+		else if (x == CommandValue.RESOLVE && z == null) {
 			throw new IllegalArgumentException("Invalid information.");
 		}
 		else if (n == null || n.length() == 0) {

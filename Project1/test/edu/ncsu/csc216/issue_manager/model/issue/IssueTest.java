@@ -403,7 +403,7 @@ public class IssueTest {
 		
 		i4.update(c);
 		assertEquals(null, i4.getOwner());
-		assertEquals("New", i4.getStateName());
+		assertEquals("Closed", i4.getStateName());
 		
 		Issue i5 = new Issue(1, "Closed", "Bug", "summary", "owner", true, "Fixed", a);
 		//Command c2 = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WONTFIX, "note");
