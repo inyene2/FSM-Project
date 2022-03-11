@@ -566,6 +566,9 @@ public class Issue {
 						throw new UnsupportedOperationException("Invalid information.");
 					}
 				}
+				else if (getIssueType() == I_BUG && x.getResolution() == Resolution.FIXED) {
+					throw new IllegalArgumentException("Issue cannot be created.");
+				}
 				else {
 					throw new UnsupportedOperationException("Invalid information.");
 				}
