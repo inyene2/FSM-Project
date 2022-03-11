@@ -86,12 +86,17 @@ public class IssueReader {
 			resolution1 = null;
 		scnr1.close();
 		ArrayList<String> notes1 = new ArrayList<String>();
-		
+		String note = "";
 		scnr.useDelimiter("\r?\n?[-]");
-		while (scnr.hasNext()) {
-//			if(!scnr.next().contains("[-"))
-//				throw new IllegalArgumentException();
-			notes1.add(scnr.next());
+		while (scnr.hasNextLine()) {
+			String temp = scnr.nextLine();
+			if ('-' == temp.charAt(0)) {
+				note = temp.substring(1);
+			}
+			else {
+				note += "\n" + temp;
+			}
+			notes1.add(note);
 		}
 		scnr.close();
 		return new Issue(issueId, state, type, summary, owner1, confirmed1, resolution1, notes1);
