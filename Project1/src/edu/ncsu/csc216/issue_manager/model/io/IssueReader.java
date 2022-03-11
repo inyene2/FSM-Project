@@ -88,7 +88,7 @@ public class IssueReader {
 		ArrayList<String> notes1 = new ArrayList<String>();
 		scnr.useDelimiter("\r?\n?[-]");
 		while (scnr.hasNext()) {
-			notes1.add("-" + scnr.next().trim());
+			notes1.add(scnr.next().trim());
 		}
 		scnr.close();
 		return new Issue(issueId, state, type, summary, owner1, confirmed1, resolution1, notes1);
