@@ -135,7 +135,7 @@ public class IssueList {
 			return z;
 		}
 		else 
-			return null;
+			throw new IllegalArgumentException();
 		
 	}
 	/**
