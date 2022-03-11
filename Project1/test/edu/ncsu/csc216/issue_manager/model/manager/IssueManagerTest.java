@@ -159,7 +159,7 @@ public class IssueManagerTest {
 		manager.createNewIssueList();
 		manager.loadIssuesFromFile("test-files/issue8.txt");
 		manager.saveIssuesToFile("test-files/actual_issues_records.txt");
-		checkFiles("test-files/issues8_2.txt", "test-files/actual_issues_records.txt");
+		checkFiles("test-files/issue8.txt", "test-files/actual_issues_records.txt");
 		
 		String x = "deez";
 		assertEquals(4, x.length());
