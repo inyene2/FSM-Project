@@ -433,7 +433,7 @@ public class Issue {
 					resolution = null;
 					addNote(x.getNote());
 				}
-				else if (getIssueType() == I_BUG  && isConfirmed() && owner == null){
+				else if (getIssueType() == I_BUG  && !isConfirmed() && owner == null){
 					state = newState;
 					resolution = null;
 					addNote(x.getNote());
