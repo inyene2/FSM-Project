@@ -337,7 +337,7 @@ public class Issue {
 	 * @return Issue as string
 	 */
 	public String toString() {
-		return "*" + getIssueId() + "," + getStateName() + "," + getIssueType() + "," + getSummary() + "," + getOwnerPrinting() + "," + isConfirmed() + "," + getResolutionPrinting() + "\n" + getNotesString();
+		return "*" + getIssueId() + "," + getStateName() + "," + getIssueType() + "," + getSummary() + "," + getOwner() + "," + isConfirmed() + "," + getResolutionPrinting() + "\n" + getNotesString();
 	}
 	/**
 	 * Adds note to Issue
