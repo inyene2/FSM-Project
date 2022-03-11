@@ -516,11 +516,11 @@ public class Issue {
 				state = confirmedState;
 				addNote(x.getNote());
 			}
-//			else if (getIssueType() == I_BUG && x.getCommand() == CommandValue.RESOLVE) {
-//				resolution = x.getResolution();
-//				state = closedState;
-//				addNote(x.getNote());
-//			}
+			else if (getIssueType() == I_BUG && x.getCommand() == CommandValue.RESOLVE) {
+				resolution = x.getResolution();
+				state = closedState;
+				addNote(x.getNote());
+			}
 			else if (getIssueType() == I_ENHANCEMENT && x.getCommand() == CommandValue.RESOLVE && x.getResolution() == Resolution.WONTFIX || x.getResolution() == Resolution.DUPLICATE) {
 				resolution = x.getResolution();
 				state = closedState;
