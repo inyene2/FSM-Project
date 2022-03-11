@@ -36,7 +36,7 @@ public class IssueReader {
 		try {
 			Scanner fileReader = new Scanner(new FileInputStream(fileName)); // Create a file scanner to read the file
 			while (fileReader.hasNextLine()) { // While we have more lines in the file
-				x = x + fileReader.nextLine();
+				x = x + fileReader.nextLine() + "\n";
 			}
 			if (x.length() == 0) {
 				throw new IllegalArgumentException();
