@@ -50,7 +50,8 @@ public class IssueManager {
 	 * @param x filename
 	 */
 	public void loadIssuesFromFile(String x) {
-			issueList.addIssues(IssueReader.readIssuesFromFile(x));
+		createNewIssueList();
+		issueList.addIssues(IssueReader.readIssuesFromFile(x));
 	}
 	/**
 	 * Creates new list of issues
