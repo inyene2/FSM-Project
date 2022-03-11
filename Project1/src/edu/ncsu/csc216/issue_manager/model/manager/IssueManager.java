@@ -78,7 +78,7 @@ public class IssueManager {
 	 * @param x Issue type
 	 * @return 2d array of issues
 	 */
-	public String[][] getIssueListAsArrayByIssueType(String x) {
+	public Object[][] getIssueListAsArrayByIssueType(String x) {
 		ArrayList<Issue> issues1 = issueList.getIssuesByType(x);
 		String[][] issuesL = new String[issues1.size()][4];
 		for (int i = 0; i < issues1.size(); i++) {

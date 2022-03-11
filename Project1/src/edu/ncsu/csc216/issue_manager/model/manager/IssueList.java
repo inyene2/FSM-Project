@@ -36,6 +36,9 @@ public class IssueList {
 	 * @return Issue id
 	 */
 	public int addIssue(IssueType type, String summary, String note) {
+		if (issues.size() == 0) {
+			counter = 1;
+		}
 		Issue i = new Issue(counter, type, summary, note);
 		addIssue(i);
 		counter++;
