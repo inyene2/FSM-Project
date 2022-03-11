@@ -132,6 +132,8 @@ public class Issue {
         } else if (state.equals(WORKING_NAME)) {
             this.state = workingState;
         } else if (state.equals(CONFIRMED_NAME)) {
+        	if (resolution != null)
+        		throw new IllegalArgumentException("Issue cannot be created.");
             this.state = confirmedState;
         } else if (state.equals(VERIFYING_NAME)) {
             this.state = verifyingState;

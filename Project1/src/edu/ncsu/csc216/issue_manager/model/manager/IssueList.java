@@ -50,6 +50,8 @@ public class IssueList {
 	 * @param issues1 list of Issues to add
 	 */
 	public void addIssues(List<Issue> issues1) {
+		issues = new ArrayList<Issue>();
+		counter = 1;
 		for (int i = 0; i < issues1.size(); i++) {
 			addIssue(issues1.get(i));
 		}
