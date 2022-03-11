@@ -37,7 +37,7 @@ public class IssueReaderTest {
 		assertEquals(2, issues.get(0).getIssueId());
         assertEquals("Bug", issues.get(0).getIssueType());
         assertEquals("Issue description", issues.get(0).getSummary());
-        assertEquals("", issues.get(0).getOwner());
+        assertEquals(null, issues.get(0).getOwner());
         assertTrue(issues.get(0).isConfirmed());
         assertEquals("Fixed", issues.get(0).getResolution());
 	}

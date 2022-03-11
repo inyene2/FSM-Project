@@ -255,11 +255,40 @@ public class Issue {
 			return null;
 	}
 	/**
+	 * Gets properly formatted resolution for printing
+	 * @return resolution
+	 */
+	private String getResolutionPrinting() {
+		if (resolution == Resolution.DUPLICATE)
+			return "Duplicate";
+		else if (resolution == Resolution.FIXED)
+			return "Fixed";
+		else if (resolution == Resolution.WONTFIX)
+			return "WontFix";
+		else if (resolution == Resolution.WORKSFORME)
+			return "WorksForMe";
+		else
+			return "";
+	}
+	/**
 	 * Returns Issue owner
 	 * @return owner
 	 */
 	public String getOwner() {
 		return owner;
+	}
+	
+	/**
+	 * Returns Issue owner
+	 * @return owner
+	 */
+	private String getOwnerPrinting() {
+		if (owner == null) {
+			return "";
+		}
+		else {
+			return owner;
+		}
 	}
 	/**
 	 * Gets Issue summary
@@ -308,7 +337,7 @@ public class Issue {
 	 * @return Issue as string
 	 */
 	public String toString() {
-		return "*" + getIssueId() + "," + getStateName() + "," + getIssueType() + "," + getSummary() + "," + getOwner() + "," + isConfirmed() + "," + getResolution() + "\n" + getNotesString();
+		return "*" + getIssueId() + "," + getStateName() + "," + getIssueType() + "," + getSummary() + "," + getOwnerPrinting() + "," + isConfirmed() + "," + getResolutionPrinting() + "\n" + getNotesString();
 	}
 	/**
 	 * Adds note to Issue

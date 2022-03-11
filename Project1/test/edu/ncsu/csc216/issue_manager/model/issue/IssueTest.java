@@ -57,7 +57,7 @@ public class IssueTest {
 		assertEquals("New", i.getStateName());
 		assertEquals("Bug", i.getIssueType());
 		assertEquals("summary", i.getSummary());
-		assertEquals("", i.getOwner());
+		assertEquals(null, i.getOwner());
 		assertFalse(i.isConfirmed());
 		assertEquals(1, i.getNotes().size());
 		assertEquals("[New] note", i.getNotes().get(0));
@@ -394,15 +394,15 @@ public class IssueTest {
 		assertEquals("Working", i1.getStateName());
 		
 		i2.update(c);
-		assertEquals("", i2.getOwner());
+		assertEquals(null, i2.getOwner());
 		assertEquals("Confirmed", i2.getStateName());
 		
 		i3.update(c);
-		assertEquals("", i3.getOwner());
+		assertEquals(null, i3.getOwner());
 		assertEquals("New", i3.getStateName());
 		
 		i4.update(c);
-		assertEquals("", i4.getOwner());
+		assertEquals(null, i4.getOwner());
 		assertEquals("New", i4.getStateName());
 		
 		Issue i5 = new Issue(1, "Closed", "Bug", "summary", "owner", true, "Fixed", a);
