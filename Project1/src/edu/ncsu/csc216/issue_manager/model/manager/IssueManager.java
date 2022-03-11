@@ -63,10 +63,11 @@ public class IssueManager {
 	 * @return 2d array of issues
 	 */
 	public Object[][] getIssueListAsArray() {
-		String[][] issuesL = new String[issueList.getIssues().size()][4];
+		Object[][] issuesL = new String[issueList.getIssues().size()][4];
 		for (int i = 0; i < issueList.getIssues().size(); i++) {
 			Issue a = issueList.getIssues().get(i);
-			issuesL[i][0] = a.getIssueId() + "";
+			Integer id = (a.getIssueId());
+			issuesL[i][0] = id;
 			issuesL[i][1] = a.getStateName();
 			issuesL[i][2] = a.getIssueType();
 			issuesL[i][3] = a.getSummary();
@@ -80,10 +81,11 @@ public class IssueManager {
 	 */
 	public Object[][] getIssueListAsArrayByIssueType(String x) {
 		ArrayList<Issue> issues1 = issueList.getIssuesByType(x);
-		String[][] issuesL = new String[issues1.size()][4];
+		Object[][] issuesL = new String[issues1.size()][4];
 		for (int i = 0; i < issues1.size(); i++) {
 			Issue a = issues1.get(i);
-			issuesL[i][0] = a.getIssueId() + "";
+			Integer id = (a.getIssueId());
+			issuesL[i][0] = id;
 			issuesL[i][1] = a.getStateName();
 			issuesL[i][2] = a.getIssueType();
 			issuesL[i][3] = a.getSummary();
