@@ -265,8 +265,8 @@ public class IssueTest {
 		Issue i = new Issue(1, IssueType.ENHANCEMENT, "summary", "note");
 		Command c = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WORKSFORME, "note");
 		i.update(c);
-		assertEquals("ownerId", (i.getOwner()));
-		assertEquals("Working", (i.getStateName()));
+		assertEquals("ownerId", i.getOwner());
+		assertEquals("Working", i.getStateName());
 	}
 	
 	/**

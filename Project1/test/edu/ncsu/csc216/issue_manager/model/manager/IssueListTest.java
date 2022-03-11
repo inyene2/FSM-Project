@@ -109,8 +109,8 @@ public class IssueListTest {
 		Command c = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WORKSFORME, "note");
 		il1.executeCommand(1, c);
 		Issue i = il1.getIssues().get(0);
-		assertEquals("ownerId", (i.getOwner()));
-		assertEquals("Working", (i.getStateName()));
+		assertEquals("ownerId", i.getOwner());
+		assertEquals("Working", i.getStateName());
 	}
 
 	/**

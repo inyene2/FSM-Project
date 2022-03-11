@@ -6,6 +6,7 @@ package edu.ncsu.csc216.issue_manager.model.manager;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
@@ -18,6 +19,7 @@ import org.junit.Test;
 import edu.ncsu.csc216.issue_manager.model.command.Command;
 import edu.ncsu.csc216.issue_manager.model.command.Command.CommandValue;
 import edu.ncsu.csc216.issue_manager.model.command.Command.Resolution;
+import edu.ncsu.csc216.issue_manager.model.io.IssueWriter;
 import edu.ncsu.csc216.issue_manager.model.issue.Issue;
 import edu.ncsu.csc216.issue_manager.model.issue.Issue.IssueType;
 
@@ -93,8 +95,8 @@ public class IssueManagerTest {
 		Command c = new Command(CommandValue.ASSIGN, "ownerId", Resolution.WORKSFORME, "note");
 		manager.executeCommand(1, c);
 		Issue i = manager.getIssueById(1);
-		assertEquals("ownerId", (i.getOwner()));
-		assertEquals("Working", (i.getStateName()));
+		assertEquals("ownerId", i.getOwner());
+		assertEquals("Working", i.getStateName());
 	}
 	
 	/**
@@ -158,8 +160,9 @@ public class IssueManagerTest {
 		manager.loadIssuesFromFile("test-files/issue8.txt");
 		manager.saveIssuesToFile("test-files/actual_issues_records.txt");
 		checkFiles("test-files/issues8_2.txt", "test-files/actual_issues_records.txt");
-
 		
+		String x = "deez";
+		assertEquals(4, x.length());
 	}
 	
 	/**

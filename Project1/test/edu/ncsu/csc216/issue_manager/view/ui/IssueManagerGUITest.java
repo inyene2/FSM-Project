@@ -4,7 +4,7 @@
 package edu.ncsu.csc216.issue_manager.view.ui;
 
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
@@ -19,6 +19,7 @@ public class IssueManagerGUITest {
 	 */
 	@Test
 	public void testIssueManagerGUI() {
-		assertFalse(false);
+		String x = "deez";
+		assertEquals(4, x.length());
 	}
 }
