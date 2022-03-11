@@ -67,6 +67,7 @@ public class IssueList {
 			}
 		}
 		if (issues.size() == 0) {
+			counter = 1;
 			issues.add(x);
 			counter = x.getIssueId() + 1;
 			return;
